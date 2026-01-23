@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AMD EPYC 9 Mumbai Plans | Veltrion Hosting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+    --bg:#020617;
+    --card:#0b0f19;
+    --purple:#7c3aed;
+    --green:#22c55e;
+    --text:#e5e7eb;
+}
+
+*{box-sizing:border-box}
+
+body {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    color: #e5e7eb;
+
+    /* Deep navy–purple premium background */
+    background:
+        radial-gradient(
+            ellipse at top,
+            #1a0f3d 0%,
+            #140b33 35%,
+            #0c071f 65%,
+            #05030f 100%
+        );
+
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Subtle grid overlay */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.03) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.03) 1px,
+            transparent 1px
+        );
+    background-size: 4px 4px;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ================= TRUSTPILOT BUTTON ================= */
+.trustpilot-section {
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    position: relative;
+
+    padding: 28px 0 36px;   /* compact height */
+    display: flex;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.0),
+            rgba(0,0,0,0.25)
+        );
+}
+
+.trustpilot-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 12px 20px;
+    background: #ffffff;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+
+    text-decoration: none;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.35);
+
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.trustpilot-btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 16px 40px rgba(0,0,0,.45);
+}
+
+.tp-star {
+    color: #00b67a; /* Trustpilot green */
+    font-size: 16px;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .support-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .support-left p {
+        margin: auto;
+    }
+
+    .support-chat {
+        align-items: center;
+    }
+
+    .chat-bubble {
+        align-self: center !important;
+    }
+}
+
+
+
+/* Keep content above background */
+.container,
+header,
+section,
+main {
+    position: relative;
+    z-index: 1;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: #020617;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text strong {
+    font-size: 14px;
+    color: #e5e7eb;
+}
+
+.logo-text span {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* CENTER */
+.footer-center {
+    text-align: center;
+    opacity: 0.6;
+    font-size: 12px;
+}
+
+/* RIGHT */
+.footer-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 22px;
+}
+
+.footer-right a {
+    color: #cbd5f5;
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.85;
+}
+
+.footer-right a:hover {
+    opacity: 1;
+    color: #a78bfa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 14px;
+    }
+
+    .footer-right {
+        justify-content: center;
+    }
+
+    .footer-left {
+        justify-content: center;
+        display: flex;
+    }
+}
+
+
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:120px 24px;
+    text-align:center;
+}
+
+h1{
+    font-size:40px;
+    margin-bottom:10px;
+}
+h1 span{color:var(--purple)}
+
+.subtitle{
+    font-size:14px;
+    opacity:.75;
+    margin-bottom:70px;
+}
+
+.main-title {
+    font-size: 46px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* GRID */
+.plans-wrapper{
+    margin:90px auto 0;
+    max-width:1400px;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+    gap:24px;
+    justify-items:center;
+}
+
+@media (max-width: 1200px){
+    .plans-wrapper{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 680px){
+    .plans-wrapper{
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* CARD */
+.plan-box{
+    width:300px;
+    background:linear-gradient(180deg,#0b0f19,#020617);
+    border-radius:20px;
+    padding:24px;
+    text-align:left;
+    box-shadow:0 20px 45px rgba(0,0,0,.7);
+    transition:.35s;
+}
+
+.plan-box:hover{
+    transform:translateY(-8px);
+    box-shadow:0 30px 65px rgba(0,0,0,.85);
+}
+
+/* HEADER */
+.plan-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:14px;
+}
+.plan-header img{
+    width:42px;
+    image-rendering:pixelated;
+}
+.plan-header h3{
+    color:#f97316;
+    letter-spacing:1px;
+}
+
+/* PRICE */
+.plan-price{
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+.plan-price span{
+    font-size:14px;
+    opacity:.7;
+}
+
+/* SPECS */
+.plan-specs{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-bottom:14px;
+}
+.spec{
+    background:#020617;
+    padding:10px;
+    border-radius:12px;
+    font-size:13px;
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+.spec i{color:var(--green)}
+.spec.wide{grid-column:span 2}
+
+/* EXTRAS */
+.plan-extras div{
+    margin-top:10px;
+    background:rgba(124,58,237,.12);
+    padding:8px 12px;
+    border-radius:10px;
+    font-size:13px;
+}
+
+/* FEATURES */
+.plan-features{
+    margin:16px 0;
+    padding:0;
+    list-style:none;
+    font-size:13px;
+}
+.plan-features li{
+    color:var(--green);
+    margin-bottom:6px;
+}
+
+.plan-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.plan-heading h2 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #e5e7eb;
+}
+
+.plan-heading .dot {
+    width: 8px;
+    height: 8px;
+    background: #3b82f6; /* blue dot */
+    border-radius: 50%;
+}
+
+.plan-subtitle {
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.75;
+    margin-bottom: 60px;
+}
+
+/* REQUIRED for glow overlay */
+.plan-box {
+    position: relative;
+    overflow: hidden;
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.plan-box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s ease;
+}
+
+.dirt-plan:hover {
+    box-shadow:
+        0 0 25px rgba(34,197,94,.35),
+        0 0 50px rgba(34,197,94,.25),
+        0 30px 70px rgba(0,0,0,.85);
+    transform: translateY(-8px);
+}
+
+.dirt-plan::after {
+    background: radial-gradient(circle at top,
+        rgba(34,197,94,.25),
+        transparent 60%
+    );
+}
+
+.dirt-plan:hover::after { opacity: 1; }
+
+.stone-plan:hover {
+    box-shadow:
+        0 0 25px rgba(156,163,175,.35),
+        0 0 50px rgba(156,163,175,.25),
+        0 30px 70px rgba(0,0,0,.85);
+}
+
+.stone-plan::after {
+    background: radial-gradient(circle at top,
+        rgba(156,163,175,.25),
+        transparent 60%
+    );
+}
+
+.stone-plan:hover::after { opacity: 1; }
+
+.coal-plan:hover {
+    box-shadow:
+        0 0 25px rgba(0,0,0,.75),
+        0 0 60px rgba(0,0,0,.6),
+        0 30px 80px rgba(0,0,0,.95);
+}
+
+.coal-plan::after {
+    background: radial-gradient(circle at top,
+        rgba(0,0,0,.6),
+        transparent 65%
+    );
+}
+
+.coal-plan:hover::after { opacity: 1; }
+
+.iron-plan:hover {
+    box-shadow:
+        0 0 30px rgba(255,255,255,.45),
+        0 0 70px rgba(255,255,255,.25),
+        0 30px 70px rgba(0,0,0,.85);
+}
+
+.iron-plan::after {
+    background: radial-gradient(circle at top,
+        rgba(255,255,255,.35),
+        transparent 60%
+    );
+}
+
+.iron-plan:hover::after { opacity: 1; }
+
+.redstone-plan:hover {
+    box-shadow:
+        0 0 30px rgba(239,68,68,.5),
+        0 0 80px rgba(239,68,68,.35),
+        0 30px 80px rgba(0,0,0,.9);
+}
+
+.redstone-plan::after {
+    background: radial-gradient(circle at top,
+        rgba(239,68,68,.4),
+        transparent 60%
+    );
+}
+
+.redstone-plan:hover::after {
+    opacity: 1;
+    animation: redPulse 1.6s infinite alternate;
+}
+
+@keyframes redPulse {
+    from { opacity: .6; }
+    to   { opacity: 1; }
+}
+
+.lapis-plan:hover {
+    box-shadow:
+        0 0 30px rgba(59,130,246,.45),
+        0 0 80px rgba(59,130,246,.35),
+        0 30px 70px rgba(0,0,0,.85);
+}
+
+.lapis-plan::after {
+    background: radial-gradient(circle at top,
+        rgba(59,130,246,.35),
+        transparent 60%
+    );
+}
+
+.lapis-plan:hover::after { opacity: 1; }
+
+.gold-plan:hover {
+    box-shadow:
+        0 0 35px rgba(234,179,8,.55),
+        0 0 90px rgba(234,179,8,.35),
+        0 30px 70px rgba(0,0,0,.85);
+}
+
+.gold-plan::after {
+    background: radial-gradient(circle at top,
+        rgba(234,179,8,.45),
+        transparent 60%
+    );
+}
+
+.gold-plan:hover::after { opacity: 1; }
+
+.emerald-plan:hover {
+    box-shadow:
+        0 0 35px rgba(34,197,94,.5),
+        0 0 90px rgba(34,197,94,.35),
+        0 30px 70px rgba(0,0,0,.85);
+}
+
+.emerald-plan::after {
+    background: radial-gradient(circle at top,
+        rgba(34,197,94,.4),
+        transparent 60%
+    );
+}
+
+.emerald-plan:hover::after { opacity: 1; }
+
+.diamond-plan:hover {
+    box-shadow:
+        0 0 40px rgba(34,211,238,.55),
+        0 0 100px rgba(34,211,238,.45),
+        0 30px 80px rgba(0,0,0,.9);
+}
+
+.diamond-plan::after {
+    background: radial-gradient(circle at top,
+        rgba(34,211,238,.45),
+        transparent 60%
+    );
+}
+
+.diamond-plan:hover::after { opacity: 1; }
+
+.netherite-plan:hover {
+    box-shadow:
+        0 0 40px rgba(88,28,135,.55),
+        0 0 110px rgba(0,0,0,.85),
+        0 30px 90px rgba(0,0,0,.95);
+}
+
+.netherite-plan::after {
+    background: radial-gradient(circle at top,
+        rgba(88,28,135,.45),
+        transparent 65%
+    );
+}
+
+.netherite-plan:hover::after { opacity: 1; }
+
+.infinity-plan:hover {
+    box-shadow:
+        0 0 30px red,
+        0 0 45px orange,
+        0 0 60px yellow,
+        0 0 75px green,
+        0 0 90px cyan,
+        0 0 110px blue,
+        0 0 130px violet;
+}
+
+.infinity-plan::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+
+    background: linear-gradient(
+        120deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet
+    );
+
+    opacity: 0;
+    filter: blur(18px);
+    transform: scale(1.15);
+
+    z-index: 1;           /* 🔥 BELOW CONTENT */
+    pointer-events: none;
+    transition: opacity .35s ease;
+}
+
+
+.infinity-plan:hover::after {
+    opacity: 0.45;
+}
+
+/* ===============================
+   MOST SOLD BADGE — HARD FIX
+   =============================== */
+
+.plan-box {
+    position: relative; /* required for absolute badge */
+}
+
+/* Badge */
+.most-sold-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+
+    /* 🔒 SIZE LOCK */
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: auto !important;
+    max-width: fit-content !important;
+
+    padding: 6px 12px;
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    color: #020617;
+    background: linear-gradient(90deg, #facc15, #f97316);
+
+    box-shadow:
+        0 6px 18px rgba(250,204,21,.55),
+        0 0 25px rgba(249,115,22,.45);
+
+    z-index: 10;              /* above glow & content */
+    pointer-events: none;
+}
+
+/* OPTIONAL ICON */
+.most-sold-badge::before {
+    content: "🔥";
+    margin-right: 4px;
+}
+
+.most-sold-badge {
+    top: -10px;
+    right: -126px;
+}
+
+
+.plan-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-box > * {
+    position: relative;
+    z-index: 2; /* keeps content above glow */
+}
+
+.badge-limited {
+    background: linear-gradient(
+        90deg,
+        #ef4444,
+        #dc2626
+    );
+
+    box-shadow:
+        0 0 18px rgba(239,68,68,.65),
+        0 0 30px rgba(220,38,38,.45);
+}
+
+.badge-limited::before {
+    content: "⏳";
+}
+
+.badge-recommended {
+    background: linear-gradient(
+        90deg,
+        #7c3aed,
+        #a855f7
+    );
+
+    box-shadow:
+        0 0 18px rgba(168,85,247,.6),
+        0 0 30px rgba(124,58,237,.45);
+}
+
+.badge-recommended::before {
+    content: "⭐";
+}
+
+.badge-recommended {
+    animation: badgePulse 1.8s infinite ease-in-out;
+}
+
+@keyframes badgePulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+/* ===============================
+   PLAN BADGES — BASE
+   =============================== */
+
+.plan-box {
+    position: relative;
+}
+
+/* Push content down if badge exists */
+.plan-box:has(.plan-badge) {
+    padding-top: 42px;
+}
+
+.plan-badge {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px 12px;
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    color: #020617;
+    z-index: 10;
+    pointer-events: none;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,.45);
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #1a0033 0%,
+            #0d021f 60%,
+            #05010d 100%
+        );
+
+    padding: 26px 0;
+}
+
+/* TOP DIVIDER LINE */
+.site-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(168,85,247,.45),
+        transparent
+    );
+}
+
+/* INNER */
+.footer-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 24px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+
+    color: #cbd5f5;
+    font-size: 13px;
+}
+
+/* LEFT */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.badge-limited {
+    animation: badgePulse 1.8s infinite ease-in-out;
+}
+
+@keyframes badgePulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+.most-sold-badge {
+    animation: badgePulse 1.8s infinite ease-in-out;
+}
+
+@keyframes badgePulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+
+/* BUTTON */
+.plan-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(90deg,#7c3aed,#22c55e);
+    font-weight:700;
+    cursor:pointer;
+    color:#020617;
+    transition:.25s;
+}
+.plan-btn:hover{transform:scale(1.05)}
+</style>
+</head>
+
+<header class="navbar">
+    <div class="nav-left">
+        <div class="logo">
+            <img src="logo.png" alt="Veltrion Hosting Logo" class="logo-img">
+            <span class="logo-text">Veltrion Hosting</span>
+        </div>
+
+        <!-- HOME -->
+        <div class="nav-links">
+            <a href="/" class="home-link">Home</a>
+        </div>
+
+        <!-- SERVICES -->
+        <div class="services-btn-wrapper nav-links">
+            <a href="#" class="services-link">
+                Services <span class="services-arrow">▾</span>
+            </a>
+
+            <div class="services-dropdown">
+                <a href="gameplans.html" class="service-card">
+                    <div class="service-icon">🎮</div>
+                    <div class="service-text">
+                        <strong>Game Hosting</strong>
+                        <span>Minecraft & game servers</span>
+                    </div>
+                </a>
+
+                <a href="vpsplans.html" class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <div class="service-text">
+                        <strong>VPS Hosting</strong>
+                        <span>High-performance virtual servers</span>
+                    </div>
+                </a>
+
+                <a href="botplans.html" class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <div class="service-text">
+                        <strong>Bot Hosting</strong>
+                        <span>24/7 Discord bot hosting</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ABOUT VELTRION -->
+<div class="about-btn-wrapper nav-links">
+    <a href="#" class="about-link">
+        About Veltrion <span class="about-arrow">▾</span>
+    </a>
+
+    <div class="about-dropdown">
+        <a href="about.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-circle-info"></i></div>
+            <div class="about-text">
+                <strong>About Us</strong>
+                <span>Our story & mission</span>
+            </div>
+        </a>
+
+        <a href="terms.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-file-contract"></i></div>
+            <div class="about-text">
+                <strong>Terms of Service</strong>
+                <span>Our terms & conditions</span>
+            </div>
+        </a>
+        <a href="partners.html" class="about-card">
+    <div class="about-icon">
+        <i class="fa-solid fa-users"></i>
+    </div>
+    <div class="about-text">
+        <strong>Partners</strong>
+        <span>Our trusted partners</span>
+    </div>
+</a>
+
+        <a href="datacenters.html" class="about-card">
+    <div class="about-icon">
+        <i class="fa-solid fa-server"></i>
+    </div>
+    <div class="about-text">
+        <strong>Datacenters</strong>
+        <span>Global infrastructure</span>
+    </div>
+</a>
+
+
+        <a href="privacy.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="about-text">
+                <strong>Privacy Policy</strong>
+                <span>How we handle your data</span>
+            </div>
+        </a>
+
+        <a href="refund.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-rotate-left"></i></div>
+            <div class="about-text">
+                <strong>Refund Policy</strong>
+                <span>Our policy on refunds</span>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+        <!-- SUPPORT (MOVED HERE ✅) -->
+        <div class="support-btn-wrapper nav-links">
+            <a href="#" class="support-link">
+                Support <span class="support-arrow">▾</span>
+            </a>
+
+            <div class="support-dropdown">
+                <a href="contact.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="support-text">
+                        <strong>Contact Us</strong>
+                        <span>Get in touch with us</span>
+                    </div>
+                </a>
+
+                <a href="faq.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-circle-question"></i></div>
+                    <div class="support-text">
+                        <strong>FAQ</strong>
+                        <span>Get expert advice</span>
+                    </div>
+                </a>
+
+                <a href="tutorials.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-book"></i></div>
+                    <div class="support-text">
+                        <strong>Tutorials</strong>
+                        <span>Step-by-step guides</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="nav-right">
+        <div class="panel-btn-wrapper">
+            <a href="#" class="panel-btn">
+                Panels <span class="panel-arrow">▾</span>
+            </a>
+
+            <div class="dropdown-menu">
+                <a href="https://portal.veltrionhost.fun/" target="_blank" rel="noopener noreferrer">🎮 Game Panel</a>
+                <a href="https://discord.gg/54EtJnjGQD" target="_blank" rel="noopener noreferrer">🎫 Support Ticket</a>
+                <a href="https://status.veltrionhost.fun/" target="_blank" rel="noopener noreferrer">📊 Uptime Status</a>
+            </div>
+        </div>
+
+        <a href="https://discord.gg/54EtJnjGQD" target="_blank" class="client-btn discord-btn">
+            <i class="fa-brands fa-discord"></i>
+            DISCORD
+        </a>
+    </div>
+</header>
+
+<body>
+
+<div class="container">
+
+<h1 class="main-title">
+    CHOOSE YOUR <span class="gradient-text">MINECRAFT PLANS</span>
+</h1>
+
+<div class="plan-heading">
+    <span class="dot"></span>
+    <h2>AMD EPYC 9 MUMBAI PLANS</h2>
+</div>
+
+<p class="plan-subtitle">
+    High-performance & stable Minecraft hosting powered by AMD EPYC 9  in Mumbai 🇮🇳
+</p>
+
+<div class="plans-wrapper">
+
+<!-- DIRT -->
+<div class="plan-box dirt-plan">
+    <div class="plan-header">
+        <img src="images/dirt.png">
+        <h3>DIRT PLAN</h3>
+    </div>
+    <div class="plan-price">₹50 <span>/ month</span></div>
+    <div class="plan-specs">
+        <div class="spec"><i class="fa-solid fa-memory"></i>2 GB RAM</div>
+        <div class="spec"><i class="fa-solid fa-microchip"></i>100% CPU</div>
+        <div class="spec wide"><i class="fa-solid fa-hard-drive"></i>10 GB NVMe SSD</div>
+    </div>
+    <div class="plan-extras">
+        <div>➕ 1 Additional Port</div>
+        <div>☁️ 1 Backup</div>
+    </div>
+    <ul class="plan-features">
+        <li>✔ Game Panel Access</li>
+        <li>✔ Full DDoS Protection</li>
+        <li>✔ 99.99% Uptime</li>
+        <li>✔ Plugin & Modpack Installer</li>
+    </ul>
+    <button class="plan-btn">Order Now</button>
+</div>
+
+<!-- STONE -->
+<div class="plan-box stone-plan">
+    <div class="plan-header">
+        <img src="images/stone.png">
+        <h3>STONE PLAN</h3>
+    </div>
+    <div class="plan-price">₹100 <span>/ month</span></div>
+    <div class="plan-specs">
+        <div class="spec"><i class="fa-solid fa-memory"></i>4 GB RAM</div>
+        <div class="spec"><i class="fa-solid fa-microchip"></i>200% CPU</div>
+        <div class="spec wide"><i class="fa-solid fa-hard-drive"></i>20 GB NVMe SSD</div>
+    </div>
+    <div class="plan-extras">
+        <div>➕ 2 Additional Ports</div>
+        <div>☁️ 2 Backups</div>
+    </div>
+    <ul class="plan-features">
+        <li>✔ Game Panel Access</li>
+        <li>✔ Full DDoS Protection</li>
+        <li>✔ 99.99% Uptime</li>
+        <li>✔ Plugin & Modpack Installer</li>
+    </ul>
+    <button class="plan-btn">Order Now</button>
+</div>
+
+<!-- COAL -->
+<div class="plan-box coal-plan">
+    <div class="plan-header">
+        <img src="images/coal.png">
+        <h3>COAL PLAN</h3>
+    </div>
+    <div class="plan-price">₹200 <span>/ month</span></div>
+    <div class="plan-specs">
+        <div class="spec"><i class="fa-solid fa-memory"></i>8 GB RAM</div>
+        <div class="spec"><i class="fa-solid fa-microchip"></i>300% CPU</div>
+        <div class="spec wide"><i class="fa-solid fa-hard-drive"></i>40 GB NVMe SSD</div>
+    </div>
+    <div class="plan-extras">
+        <div>➕ 3 Additional Ports</div>
+        <div>☁️ 3 Backups</div>
+    </div>
+    <ul class="plan-features">
+        <li>✔ Game Panel Access</li>
+        <li>✔ Full DDoS Protection</li>
+        <li>✔ 99.99% Uptime</li>
+        <li>✔ Plugin & Modpack Installer</li>
+    </ul>
+    <button class="plan-btn">Order Now</button>
+</div>
+
+<!-- IRON -->
+<div class="plan-box iron-plan">
+    <div class="plan-badge badge-recommended">Recommended</div>
+    <div class="plan-header">
+        <img src="images/iron.png">
+        <h3>IRON PLAN</h3>
+    </div>
+    <div class="plan-price">₹300 <span>/ month</span></div>
+    <div class="plan-specs">
+        <div class="spec"><i class="fa-solid fa-memory"></i>12 GB RAM</div>
+        <div class="spec"><i class="fa-solid fa-microchip"></i>350% CPU</div>
+        <div class="spec wide"><i class="fa-solid fa-hard-drive"></i>60 GB NVMe SSD</div>
+    </div>
+    <div class="plan-extras">
+        <div>➕ 4 Additional Ports</div>
+        <div>☁️ 4 Backups</div>
+    </div>
+    <ul class="plan-features">
+        <li>✔ Game Panel Access</li>
+        <li>✔ Full DDoS Protection</li>
+        <li>✔ 99.99% Uptime</li>
+        <li>✔ Plugin & Modpack Installer</li>
+    </ul>
+    <button class="plan-btn">Order Now</button>
+</div>
+
+<!-- REDSTONE -->
+<div class="plan-box redstone-plan">
+    <div class="plan-header">
+        <img src="images/redstone.png" alt="Redstone">
+        <h3>REDSTONE PLAN</h3>
+    </div>
+
+    <div class="plan-price">
+        ₹400 <span>/ month</span>
+    </div>
+
+    <div class="plan-specs">
+        <div class="spec">
+            <i class="fa-solid fa-memory"></i>
+            16 GB RAM
+        </div>
+        <div class="spec">
+            <i class="fa-solid fa-microchip"></i>
+            400% CPU
+        </div>
+        <div class="spec wide">
+            <i class="fa-solid fa-hard-drive"></i>
+            80 GB NVMe SSD
+        </div>
+    </div>
+
+    <div class="plan-extras">
+        <div>➕ 5 Additional Ports</div>
+        <div>☁️ 5 Backups</div>
+    </div>
+
+    <ul class="plan-features">
+        <li>✔ Game Panel Access</li>
+        <li>✔ Full DDoS Protection</li>
+        <li>✔ 99.99% Uptime</li>
+        <li>✔ Plugin & Modpack Installer</li>
+    </ul>
+
+    <button class="plan-btn">Order Now</button>
+</div>
+
+<!-- LAPIS -->
+<div class="plan-box lapis-plan" id="lapis-plan">
+    <div class="most-sold-badge">Most Popular</div>
+    <div class="plan-header">
+        <img src="images/lapis.png" alt="Lapis">
+        <h3>LAPIS PLAN</h3>
+    </div>
+
+    <div class="plan-price">
+        ₹600 <span>/ month</span>
+    </div>
+
+    <div class="plan-specs">
+        <div class="spec">
+            <i class="fa-solid fa-memory"></i>
+            24 GB RAM
+        </div>
+        <div class="spec">
+            <i class="fa-solid fa-microchip"></i>
+            450% CPU
+        </div>
+        <div class="spec wide">
+            <i class="fa-solid fa-hard-drive"></i>
+            120 GB NVMe SSD
+        </div>
+    </div>
+
+    <div class="plan-extras">
+        <div>➕ 6 Additional Ports</div>
+        <div>☁️ 6 Backups</div>
+    </div>
+
+    <ul class="plan-features">
+        <li>✔ Game Panel Access</li>
+        <li>✔ Full DDoS Protection</li>
+        <li>✔ 99.99% Uptime</li>
+        <li>✔ Plugin & Modpack Installer</li>
+    </ul>
+
+    <button class="plan-btn">Order Now</button>
+</div>
+
+<!-- GOLD -->
+<div class="plan-box gold-plan" id="gold-plan">
+    <div class="plan-header">
+        <img src="images/gold.png" alt="Gold">
+        <h3>GOLD PLAN</h3>
+    </div>
+
+    <div class="plan-price">
+        ₹800 <span>/ month</span>
+    </div>
+
+    <div class="plan-specs">
+        <div class="spec">
+            <i class="fa-solid fa-memory"></i>
+            32 GB RAM
+        </div>
+        <div class="spec">
+            <i class="fa-solid fa-microchip"></i>
+            500% CPU
+        </div>
+        <div class="spec wide">
+            <i class="fa-solid fa-hard-drive"></i>
+            160 GB NVMe SSD
+        </div>
+    </div>
+
+    <div class="plan-extras">
+        <div>➕ 7 Additional Ports</div>
+        <div>☁️ 7 Backups</div>
+    </div>
+
+    <ul class="plan-features">
+        <li>✔ Game Panel Access</li>
+        <li>✔ Full DDoS Protection</li>
+        <li>✔ 99.99% Uptime</li>
+        <li>✔ Plugin & Modpack Installer</li>
+    </ul>
+
+    <button class="plan-btn">Order Now</button>
+</div>
+
+<!-- GOLD -->
+<div class="plan-box emerald-plan" id="emerald-plan">
+    <div class="plan-header">
+        <img src="images/emerald.png" alt="Emerald">
+        <h3>EMERALD PLAN</h3>
+    </div>
+
+    <div class="plan-price">
+        ₹1200 <span>/ month</span>
+    </div>
+
+    <div class="plan-specs">
+        <div class="spec">
+            <i class="fa-solid fa-memory"></i>
+            48 GB RAM
+        </div>
+        <div class="spec">
+            <i class="fa-solid fa-microchip"></i>
+            700% CPU
+        </div>
+        <div class="spec wide">
+            <i class="fa-solid fa-hard-drive"></i>
+            240 GB NVMe SSD
+        </div>
+    </div>
+
+    <div class="plan-extras">
+        <div>➕ 8 Additional Ports</div>
+        <div>☁️ 8 Backups</div>
+    </div>
+
+    <ul class="plan-features">
+        <li>✔ Game Panel Access</li>
+        <li>✔ Full DDoS Protection</li>
+        <li>✔ 99.99% Uptime</li>
+        <li>✔ Plugin & Modpack Installer</li>
+    </ul>
+
+    <button class="plan-btn">Order Now</button>
+</div>
+
+<!-- DIAMOND -->
+<div class="plan-box diamond-plan" id="diamond-plan">
+    <div class="plan-header">
+        <img src="images/diamond.png" alt="Diamond">
+        <h3>DIAMOND PLAN</h3>
+    </div>
+
+    <div class="plan-price">
+        ₹1600 <span>/ month</span>
+    </div>
+
+    <div class="plan-specs">
+        <div class="spec">
+            <i class="fa-solid fa-memory"></i>
+            64 GB RAM
+        </div>
+        <div class="spec">
+            <i class="fa-solid fa-microchip"></i>
+            800% CPU
+        </div>
+        <div class="spec wide">
+            <i class="fa-solid fa-hard-drive"></i>
+            320 GB NVMe SSD
+        </div>
+    </div>
+
+    <div class="plan-extras">
+        <div>➕ 9 Additional Ports</div>
+        <div>☁️ 9 Backups</div>
+    </div>
+
+    <ul class="plan-features">
+        <li>✔ Game Panel Access</li>
+        <li>✔ Full DDoS Protection</li>
+        <li>✔ 99.99% Uptime</li>
+        <li>✔ Plugin & Modpack Installer</li>
+    </ul>
+
+    <button class="plan-btn">Order Now</button>
+</div>
+
+<!-- NETHERITE -->
+<div class="plan-box netherite-plan" id="netherite-plan">
+    <div class="plan-badge badge-limited">Limited Offer</div>
+    <div class="plan-header">
+        <img src="images/netherite.png" alt="Netherite">
+        <h3>NETHERITE PLAN</h3>
+    </div>
+
+    <div class="plan-price">
+        ₹2400 <span>/ month</span>
+    </div>
+
+    <div class="plan-specs">
+        <div class="spec">
+            <i class="fa-solid fa-memory"></i>
+            96 GB RAM
+        </div>
+        <div class="spec">
+            <i class="fa-solid fa-microchip"></i>
+            1200% CPU
+        </div>
+        <div class="spec wide">
+            <i class="fa-solid fa-hard-drive"></i>
+            480 GB NVMe SSD
+        </div>
+    </div>
+
+    <div class="plan-extras">
+        <div>➕ 10 Additional Ports</div>
+        <div>☁️ 10 Backups</div>
+    </div>
+
+    <ul class="plan-features">
+        <li>✔ Game Panel Access</li>
+        <li>✔ Full DDoS Protection</li>
+        <li>✔ 99.99% Uptime</li>
+        <li>✔ Plugin & Modpack Installer</li>
+    </ul>
+
+    <button class="plan-btn">Order Now</button>
+</div>
+
+<!-- INFINITY -->
+<div class="plan-box infinity-plan" id="infinity-plan">
+    <div class="plan-header">
+        <img src="images/infinity.png" alt="Infinity">
+        <h3>INFINITY PLAN</h3>
+    </div>
+
+    <div class="plan-price">
+        ₹4500 <span>/ month</span>
+    </div>
+
+    <div class="plan-specs">
+        <div class="spec">
+            <i class="fa-solid fa-memory"></i>
+            ∞ GB RAM
+        </div>
+        <div class="spec">
+            <i class="fa-solid fa-microchip"></i>
+            ∞ % CPU
+        </div>
+        <div class="spec wide">
+            <i class="fa-solid fa-hard-drive"></i>
+            ∞ GB NVMe SSD
+        </div>
+    </div>
+
+    <div class="plan-extras">
+        <div>➕ ∞ Additional Ports</div>
+        <div>☁️ ∞ Backups</div>
+    </div>
+
+    <ul class="plan-features">
+        <li>✔ Game Panel Access</li>
+        <li>✔ Full DDoS Protection</li>
+        <li>✔ 99.99% Uptime</li>
+        <li>✔ Unlimited Plugins & Modpacks</li>
+        <li>✔ Priority Support</li>
+    </ul>
+
+    <button class="plan-btn">Order Now</button>
+</div>
+
+
+</div>
+</div>
+<section class="trustpilot-section">
+    <a href="https://www.trustpilot.com/review/veltrionhost.fun?utm_medium=trustbox&utm_source=TrustBoxReviewCollector"
+       target="_blank"
+       class="trustpilot-btn">
+        Review us on
+        <span class="tp-star">★</span>
+        Trustpilot
+    </a>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <!-- LEFT -->
+<div class="footer-left">
+    <div class="footer-logo">
+        <img src="images/logo.png" alt="Veltrion Hosting Logo" class="footer-logo-img">
+        <div class="logo-text">
+            <strong>Veltrion Hosting</strong>
+            <span>Premium Game & Cloud Hosting</span>
+        </div>
+    </div>
+</div>
+
+
+        <!-- CENTER -->
+        <div class="footer-center">
+            © 2026 Veltrion Hosting. All Rights Reserved.
+        </div>
+
+        <!-- RIGHT -->
+        <div class="footer-right">
+            <a href="mailto:support@veltrionhost.fun">
+                <i class="fa-solid fa-envelope"></i>
+                support@veltrionhost.fun
+            </a>
+            <a href="https://discord.gg/54EtJnjGQD" target="_blank">
+                <i class="fa-brands fa-discord"></i>
+                Discord
+            </a>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>

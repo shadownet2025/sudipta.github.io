@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tutorials | Veltrion Hosting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- MAIN SITE CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- FONTS & ICONS -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ================= GLOBAL ================= */
+body {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    color: #e5e7eb;
+    background:
+        radial-gradient(
+            ellipse at top,
+            #1a0f3d 0%,
+            #140b33 35%,
+            #0c071f 65%,
+            #05030f 100%
+        );
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 4px 4px;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container,
+header,
+section,
+main {
+    position: relative;
+    z-index: 1;
+}
+
+/* ================= PAGE ================= */
+.page-content {
+    padding: 100px 24px;
+}
+
+/* ================= LAYOUT ================= */
+.tutorials-container {
+    max-width: 1300px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 30px;
+}
+
+/* ================= SIDEBAR ================= */
+.tutorial-sidebar {
+    background: linear-gradient(180deg, #0b0f19, #020617);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.6);
+}
+
+.tutorial-sidebar h3 {
+    font-size: 14px;
+    margin-bottom: 14px;
+    opacity: .75;
+}
+
+.category-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.04);
+    margin-bottom: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background .25s ease;
+}
+
+.category-btn:hover {
+    background: rgba(124,58,237,.18);
+}
+
+/* ================= MAIN ================= */
+.tutorial-header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.intro-card {
+    background: linear-gradient(180deg, #0b0f19, #020617);
+    border-radius: 18px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.6);
+}
+
+.intro-card i {
+    font-size: 32px;
+    color: #a78bfa;
+    margin-bottom: 10px;
+}
+
+/* ================= GRID ================= */
+.tutorial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+/* ================= CARD ================= */
+.tutorial-card {
+    background: linear-gradient(180deg, #0b0f19, #020617);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,.6);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.tutorial-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 30px 60px rgba(0,0,0,.85),
+        0 0 30px rgba(124,58,237,.35);
+}
+
+/* ================= VIDEO ================= */
+.video-thumb {
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    cursor: pointer;
+}
+/* ✅ Let YouTube receive all clicks */
+.video-thumb.playing {
+    cursor: default;
+}
+
+.video-thumb.playing::after,
+.video-thumb.playing .play-icon {
+    display: none;
+}
+
+/* iframe must be top layer */
+.video-thumb iframe {
+    position: relative;
+    z-index: 5;
+}
+
+/* prevent overlays from stealing clicks */
+.video-thumb::after,
+.play-icon {
+    pointer-events: none;
+}
+
+
+.video-thumb iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.55));
+}
+
+.play-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    color: white;
+    z-index: 2;
+}
+
+/* ================= CONTENT ================= */
+.tutorial-content {
+    padding: 16px;
+}
+
+.tutorial-content h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.tutorial-content p {
+    font-size: 13px;
+    opacity: .7;
+    line-height: 1.4;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 900px) {
+    .tutorials-container {
+        grid-template-columns: 1fr;
+    }
+}
+/* ================= FOOTER ================= */
+.site-footer {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #1a0033 0%,
+            #0d021f 60%,
+            #05010d 100%
+        );
+
+    padding: 26px 0;
+}
+
+/* TOP DIVIDER LINE */
+.site-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(168,85,247,.45),
+        transparent
+    );
+}
+
+/* INNER */
+.footer-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 24px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+
+    color: #cbd5f5;
+    font-size: 13px;
+}
+
+/* LEFT */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: #020617;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text strong {
+    font-size: 14px;
+    color: #e5e7eb;
+}
+
+.logo-text span {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* CENTER */
+.footer-center {
+    text-align: center;
+    opacity: 0.6;
+    font-size: 12px;
+}
+
+/* RIGHT */
+.footer-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 22px;
+}
+
+.footer-right a {
+    color: #cbd5f5;
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.85;
+}
+
+.footer-right a:hover {
+    opacity: 1;
+    color: #a78bfa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 14px;
+    }
+
+    .footer-right {
+        justify-content: center;
+    }
+
+    .footer-left {
+        justify-content: center;
+        display: flex;
+    }
+}
+
+.video-thumb iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="nav-left">
+        <div class="logo">
+            <img src="logo.png" alt="Veltrion Hosting Logo" class="logo-img">
+            <span class="logo-text">Veltrion Hosting</span>
+        </div>
+
+        <!-- HOME -->
+        <div class="nav-links">
+            <a href="/" class="home-link">Home</a>
+        </div>
+
+        <!-- SERVICES -->
+        <div class="services-btn-wrapper nav-links">
+            <a href="#" class="services-link">
+                Services <span class="services-arrow">▾</span>
+            </a>
+
+            <div class="services-dropdown">
+                <a href="gameplans.html" class="service-card">
+                    <div class="service-icon">🎮</div>
+                    <div class="service-text">
+                        <strong>Game Hosting</strong>
+                        <span>Minecraft & game servers</span>
+                    </div>
+                </a>
+
+                <a href="vpsplans.html" class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <div class="service-text">
+                        <strong>VPS Hosting</strong>
+                        <span>High-performance virtual servers</span>
+                    </div>
+                </a>
+
+                <a href="botplans.html" class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <div class="service-text">
+                        <strong>Bot Hosting</strong>
+                        <span>24/7 Discord bot hosting</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ABOUT VELTRION -->
+<div class="about-btn-wrapper nav-links">
+    <a href="#" class="about-link">
+        About Veltrion <span class="about-arrow">▾</span>
+    </a>
+
+    <div class="about-dropdown">
+        <a href="about.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-circle-info"></i></div>
+            <div class="about-text">
+                <strong>About Us</strong>
+                <span>Our story & mission</span>
+            </div>
+        </a>
+
+        <a href="terms.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-file-contract"></i></div>
+            <div class="about-text">
+                <strong>Terms of Service</strong>
+                <span>Our terms & conditions</span>
+            </div>
+        </a>
+        <a href="partners.html" class="about-card">
+    <div class="about-icon">
+        <i class="fa-solid fa-users"></i>
+    </div>
+    <div class="about-text">
+        <strong>Partners</strong>
+        <span>Our trusted partners</span>
+    </div>
+</a>
+
+        <a href="datacenters.html" class="about-card">
+    <div class="about-icon">
+        <i class="fa-solid fa-server"></i>
+    </div>
+    <div class="about-text">
+        <strong>Datacenters</strong>
+        <span>Global infrastructure</span>
+    </div>
+</a>
+
+
+        <a href="privacy.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="about-text">
+                <strong>Privacy Policy</strong>
+                <span>How we handle your data</span>
+            </div>
+        </a>
+
+        <a href="refund.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-rotate-left"></i></div>
+            <div class="about-text">
+                <strong>Refund Policy</strong>
+                <span>Our policy on refunds</span>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+        <!-- SUPPORT (MOVED HERE ✅) -->
+        <div class="support-btn-wrapper nav-links">
+            <a href="#" class="support-link">
+                Support <span class="support-arrow">▾</span>
+            </a>
+
+            <div class="support-dropdown">
+                <a href="contact.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="support-text">
+                        <strong>Contact Us</strong>
+                        <span>Get in touch with us</span>
+                    </div>
+                </a>
+
+                <a href="faq.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-circle-question"></i></div>
+                    <div class="support-text">
+                        <strong>FAQ</strong>
+                        <span>Get expert advice</span>
+                    </div>
+                </a>
+
+                <a href="tutorials.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-book"></i></div>
+                    <div class="support-text">
+                        <strong>Tutorials</strong>
+                        <span>Step-by-step guides</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="nav-right">
+        <div class="panel-btn-wrapper">
+            <a href="#" class="panel-btn">
+                Panels <span class="panel-arrow">▾</span>
+            </a>
+
+            <div class="dropdown-menu">
+                <a href="https://portal.veltrionhost.fun/" target="_blank" rel="noopener noreferrer">🎮 Game Panel</a>
+                <a href="https://discord.gg/54EtJnjGQD" target="_blank" rel="noopener noreferrer">🎫 Support Ticket</a>
+                <a href="https://status.veltrionhost.fun/" target="_blank" rel="noopener noreferrer">📊 Uptime Status</a>
+            </div>
+        </div>
+
+        <a href="https://discord.gg/54EtJnjGQD" target="_blank" class="client-btn discord-btn">
+            <i class="fa-brands fa-discord"></i>
+            DISCORD
+        </a>
+    </div>
+</header>
+
+<div class="page-content">
+<div class="tutorials-container">
+
+<!-- SIDEBAR -->
+<aside class="tutorial-sidebar">
+    <h3>CATEGORIES</h3>
+    <div class="category-btn">🎮 Minecraft</div>
+    <div class="category-btn">☁️ VPS Hosting</div>
+    <div class="category-btn">🤖 Discord Bots</div>
+</aside>
+
+<!-- MAIN -->
+<main>
+
+<div class="tutorial-header">
+    <h1>Veltrion Tutorials</h1>
+</div>
+
+<div class="intro-card">
+    <i class="fa-solid fa-book"></i>
+    <h3>OFFICIAL KNOWLEDGE BASE</h3>
+    <p>Watch step-by-step tutorials directly on Veltrion Hosting.</p>
+</div>
+
+<div class="tutorial-grid">
+
+<!-- VIDEO 1 -->
+<div class="tutorial-card">
+    <div class="video-thumb" data-video-id="eMD2rZWu7xU"
+         style="background-image:url('https://i.ytimg.com/vi/eMD2rZWu7xU/maxresdefault.jpg')">
+        <span class="play-icon">▶</span>
+    </div>
+    <div class="tutorial-content">
+        <h4>Setup GeyserMC</h4>
+        <p>Allow Bedrock & Java players to join your server.</p>
+    </div>
+</div>
+
+<!-- VIDEO 2 -->
+<div class="tutorial-card">
+    <div class="video-thumb" data-video-id="p3fEtkczniE"
+         style="background-image:url('https://img.youtube.com/vi/p3fEtkczniE/hqdefault.jpg')">
+        <span class="play-icon">▶</span>
+    </div>
+    <div class="tutorial-content">
+        <h4>Use SFTP in Pterodactyl</h4>
+        <p>Upload files securely to your Minecraft server.</p>
+    </div>
+</div>
+
+<!-- VIDEO 3 -->
+<div class="tutorial-card">
+    <div class="video-thumb" data-video-id="3kFKbcz-m38"
+         style="background-image:url('https://i.ytimg.com/vi/3kFKbcz-m38/hq720.jpg')">
+        <span class="play-icon">▶</span>
+    </div>
+    <div class="tutorial-content">
+        <h4>Custom Domain for Minecraft</h4>
+        <p>Connect your domain to a Minecraft server IP.</p>
+    </div>
+</div>
+
+</div>
+
+</main>
+</div>
+</div>
+
+<!-- ================= YOUTUBE EMBED SCRIPT ================= -->
+<script>
+document.querySelectorAll('.video-thumb').forEach(thumb => {
+    let isPlaying = false;
+
+    thumb.addEventListener('click', (e) => {
+        if (isPlaying) return;   // 🔒 prevent reloading
+        isPlaying = true;
+
+        const videoId = thumb.dataset.videoId;
+
+        thumb.innerHTML = `
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&controls=1&rel=0&modestbranding=1"
+                frameborder="0"
+                allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                allowfullscreen>
+            </iframe>
+        `;
+
+        thumb.classList.add('playing');
+        thumb.style.cursor = "default";
+    });
+});
+</script>
+
+
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <!-- LEFT -->
+<div class="footer-left">
+    <div class="footer-logo">
+        <img src="images/logo.png" alt="Veltrion Hosting Logo" class="footer-logo-img">
+        <div class="logo-text">
+            <strong>Veltrion Hosting</strong>
+            <span>Premium Game & Cloud Hosting</span>
+        </div>
+    </div>
+</div>
+
+
+        <!-- CENTER -->
+        <div class="footer-center">
+            © 2026 Veltrion Hosting. All Rights Reserved.
+        </div>
+
+        <!-- RIGHT -->
+        <div class="footer-right">
+            <a href="mailto:support@veltrionhost.fun">
+                <i class="fa-solid fa-envelope"></i>
+                support@veltrionhost.fun
+            </a>
+            <a href="https://discord.gg/54EtJnjGQD" target="_blank">
+                <i class="fa-brands fa-discord"></i>
+                Discord
+            </a>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>

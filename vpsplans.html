@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VPS Hosting | Veltrion Hosting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- MAIN SITE CSS -->
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ================= GLOBAL ================= */
+body {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    color: #e5e7eb;
+    background: radial-gradient(ellipse at top,#1a0f3d,#05030f);
+    min-height: 100vh;
+}
+
+body::before {
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:4px 4px;
+    opacity:.15;
+    pointer-events:none;
+}
+
+/* ================= HERO ================= */
+.vps-hero {
+    padding:120px 24px 80px;
+    text-align:center;
+}
+
+.vps-hero h1 {
+    font-size:46px;
+    font-weight:800;
+}
+
+.vps-hero span {
+    background:linear-gradient(90deg,#a855f7,#60a5fa);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.vps-hero p {
+    font-size:14px;
+    opacity:.75;
+    max-width:640px;
+    margin:auto;
+}
+
+/* ================= CPU TABS ================= */
+.vps-cpu-tabs {
+    max-width:1200px;
+    margin:60px auto;
+    padding:14px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    justify-content:center;
+    background:linear-gradient(180deg,rgba(124,58,237,.15),rgba(2,6,23,.9));
+    border-radius:22px;
+    backdrop-filter:blur(14px);
+    box-shadow:0 0 40px rgba(124,58,237,.35);
+}
+
+.cpu-tab {
+    padding:12px 22px;
+    border-radius:999px;
+    border:none;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:600;
+    color:#cbd5f5;
+    background:rgba(2,6,23,.8);
+    transition:.3s;
+}
+
+.cpu-tab:hover { color:#fff; transform:translateY(-2px); }
+
+.cpu-tab.active {
+    color:#020617;
+    background:linear-gradient(90deg,#7c3aed,#22d3ee);
+    box-shadow:0 0 30px rgba(124,58,237,.9);
+}
+
+/* ================= VPS PLANS ================= */
+.vps-plans {
+    max-width:1200px;
+    margin:auto;
+    padding:0 24px 120px;
+}
+
+.vps-plan-group {
+    display:none;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:26px;
+    animation:fadeUp .35s ease;
+}
+
+.vps-plan-group.active {
+    display:grid;
+}
+
+@keyframes fadeUp {
+    from {opacity:0; transform:translateY(12px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+.vps-card {
+    background:linear-gradient(180deg,#0b0f19,#020617);
+    border-radius:22px;
+    padding:28px;
+    box-shadow:0 20px 45px rgba(0,0,0,.75);
+    transition:.35s;
+}
+
+.vps-card:hover {
+    transform:translateY(-10px);
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.9),
+        0 0 45px rgba(124,58,237,.45);
+}
+
+.vps-card h3 { font-size:18px; margin-bottom:4px; }
+.vps-card span { font-size:13px; opacity:.7; }
+
+.vps-price {
+    font-size:30px;
+    font-weight:800;
+    margin:18px 0;
+}
+
+.vps-specs div {
+    font-size:13px;
+    line-height:1.9;
+}
+
+.vps-btn {
+    display:block;
+    margin-top:18px;
+    padding:14px;
+    border-radius:14px;
+    background:linear-gradient(90deg,#7c3aed,#22c55e);
+    color:#020617;
+    font-weight:700;
+    text-align:center;
+    text-decoration:none;
+}
+
+.vps-card.highlight {
+    border:1px solid rgba(34,211,238,.6);
+    box-shadow:
+        0 0 45px rgba(34,211,238,.6),
+        0 30px 70px rgba(0,0,0,.9);
+}
+
+.vps-plan-card {
+    background: linear-gradient(180deg, #120626, #070311);
+    border-radius: 22px;
+    padding: 28px;
+    text-align: center;
+
+    box-shadow:
+        0 0 0 1px rgba(168,85,247,.35),
+        0 20px 50px rgba(0,0,0,.8),
+        0 0 40px rgba(124,58,237,.35);
+
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.vps-plan-card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.95),
+        0 0 65px rgba(124,58,237,.7);
+}
+
+/* TITLE */
+.plan-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #c4b5fd;
+    margin-bottom: 12px;
+}
+
+/* PRICE */
+.plan-price {
+    font-size: 34px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 18px;
+}
+
+/* SPECS */
+.plan-specs {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 26px;
+    text-align: left;
+    font-size: 13px;
+}
+
+.plan-specs li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    opacity: .9;
+}
+
+.plan-specs i {
+    color: #a855f7;
+    min-width: 16px;
+}
+
+/* BUTTON */
+.order-btn {
+    display: block;
+    padding: 14px;
+    border-radius: 14px;
+
+    background: linear-gradient(90deg, #7c3aed, #8b5cf6);
+    color: #020617;
+    font-weight: 700;
+    text-decoration: none;
+
+    box-shadow: 0 0 25px rgba(124,58,237,.6);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.order-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 45px rgba(124,58,237,.95);
+}
+
+.vps-plan-card {
+    max-width: 280px;            /* 🔥 reduced width */
+    margin: auto;
+
+    background: linear-gradient(
+        180deg,
+        rgba(124,58,237,0.18),
+        rgba(2,6,23,0.85)
+    );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-radius: 22px;
+    padding: 24px;
+    text-align: center;
+
+    border: 1px solid rgba(168,85,247,0.35);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.75),
+        0 0 40px rgba(124,58,237,.35);
+
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.vps-plan-card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 35px 80px rgba(0,0,0,.95),
+        0 0 70px rgba(124,58,237,.75);
+}
+
+/* TITLE */
+.plan-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #c4b5fd;
+    margin-bottom: 10px;
+}
+
+/* PRICE */
+.plan-price {
+    font-size: 32px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 18px;
+}
+
+/* SPECS */
+.plan-specs {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    text-align: left;
+    font-size: 13px;
+}
+
+.plan-specs li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 9px;
+    opacity: .9;
+}
+
+.plan-specs i {
+    color: #a855f7;
+    min-width: 16px;
+}
+
+/* ORDER BUTTON */
+.order-btn {
+    display: block;
+    padding: 13px;
+    border-radius: 14px;
+
+    background: linear-gradient(
+        90deg,
+        #7c3aed,
+        #8b5cf6
+    );
+
+    color: #020617;
+    font-weight: 700;
+    text-decoration: none;
+
+    box-shadow: 0 0 25px rgba(124,58,237,.6);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.order-btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 45px rgba(124,58,237,.95);
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #1a0033 0%,
+            #0d021f 60%,
+            #05010d 100%
+        );
+
+    padding: 26px 0;
+}
+
+/* TOP DIVIDER LINE */
+.site-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(168,85,247,.45),
+        transparent
+    );
+}
+
+/* INNER */
+.footer-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 24px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+
+    color: #cbd5f5;
+    font-size: 13px;
+}
+
+/* LEFT */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: #020617;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text strong {
+    font-size: 14px;
+    color: #e5e7eb;
+}
+
+.logo-text span {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* CENTER */
+.footer-center {
+    text-align: center;
+    opacity: 0.6;
+    font-size: 12px;
+}
+
+/* RIGHT */
+.footer-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 22px;
+}
+
+.footer-right a {
+    color: #cbd5f5;
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.85;
+}
+
+.footer-right a:hover {
+    opacity: 1;
+    color: #a78bfa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 14px;
+    }
+
+    .footer-right {
+        justify-content: center;
+    }
+
+    .footer-left {
+        justify-content: center;
+        display: flex;
+    }
+}
+
+
+</style>
+</head>
+<header class="navbar">
+    <div class="nav-left">
+        <!-- HOME -->
+        <div class="logo">
+            <a href="/" class="logo-link">
+                <img src="logo.png" alt="Veltrion Hosting Logo" class="logo-img">
+                <span class="logo-text">Veltrion Hosting</span>
+            </a>
+        </div>
+
+        <!-- SERVICES -->
+        <div class="services-btn-wrapper nav-links">
+            <a href="#" class="services-link">
+                Services <span class="services-arrow">▾</span>
+            </a>
+
+
+            <div class="services-dropdown">
+                <a href="freeplans.html" class="service-card">
+                    <div class="service-icon">🆓</div>
+                    <div class="service-text">
+                        <strong>Free Hosting</strong>
+                        <span>Minecraft & game servers</span>
+                    </div>
+                </a>
+
+                <a href="gameplans.html" class="service-card">
+                    <div class="service-icon">🎮</div>
+                    <div class="service-text">
+                        <strong>Game Hosting</strong>
+                        <span>Minecraft & game servers</span>
+                    </div>
+                </a>
+
+                <a href="vpsplans.html" class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <div class="service-text">
+                        <strong>VPS Hosting</strong>
+                        <span>High-performance virtual servers</span>
+                    </div>
+                </a>
+
+                <a href="botplans.html" class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <div class="service-text">
+                        <strong>Bot Hosting</strong>
+                        <span>24/7 Discord bot hosting</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ABOUT VELTRION -->
+<div class="about-btn-wrapper nav-links">
+    <a href="#" class="about-link">
+        About Veltrion <span class="about-arrow">▾</span>
+    </a>
+
+    <div class="about-dropdown">
+        <a href="about.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-circle-info"></i></div>
+            <div class="about-text">
+                <strong>About Us</strong>
+                <span>Our story & mission</span>
+            </div>
+        </a>
+
+        <a href="terms.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-file-contract"></i></div>
+            <div class="about-text">
+                <strong>Terms of Service</strong>
+                <span>Our terms & conditions</span>
+            </div>
+        </a>
+        <a href="partners.html" class="about-card">
+    <div class="about-icon">
+        <i class="fa-solid fa-users"></i>
+    </div>
+    <div class="about-text">
+        <strong>Partners</strong>
+        <span>Our trusted partners</span>
+    </div>
+</a>
+
+        <a href="datacenters.html" class="about-card">
+    <div class="about-icon">
+        <i class="fa-solid fa-server"></i>
+    </div>
+    <div class="about-text">
+        <strong>Datacenters</strong>
+        <span>Global infrastructure</span>
+    </div>
+</a>
+
+
+        <a href="privacy.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="about-text">
+                <strong>Privacy Policy</strong>
+                <span>How we handle your data</span>
+            </div>
+        </a>
+
+        <a href="refund.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-rotate-left"></i></div>
+            <div class="about-text">
+                <strong>Refund Policy</strong>
+                <span>Our policy on refunds</span>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+        <!-- SUPPORT (MOVED HERE ✅) -->
+        <div class="support-btn-wrapper nav-links">
+            <a href="#" class="support-link">
+                Support <span class="support-arrow">▾</span>
+            </a>
+
+            <div class="support-dropdown">
+                <a href="contact.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="support-text">
+                        <strong>Contact Us</strong>
+                        <span>Get in touch with us</span>
+                    </div>
+                </a>
+
+                <a href="faq.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-circle-question"></i></div>
+                    <div class="support-text">
+                        <strong>FAQ</strong>
+                        <span>Get expert advice</span>
+                    </div>
+                </a>
+
+                <a href="tutorials.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-book"></i></div>
+                    <div class="support-text">
+                        <strong>Tutorials</strong>
+                        <span>Step-by-step guides</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="nav-right">
+        <div class="panel-btn-wrapper">
+            <a href="#" class="panel-btn">
+                Panels <span class="panel-arrow">▾</span>
+            </a>
+
+            <div class="dropdown-menu">
+                <a href="https://portal.veltrionhost.fun/" target="_blank" rel="noopener noreferrer">🎮 Game Panel</a>
+                <a href="https://billing.veltrionhost.fun/dashboard" target="_blank" rel="noopener noreferrer">🏠 Dashboard</a>
+                <a href="https://discord.gg/54EtJnjGQD" target="_blank" rel="noopener noreferrer">🎫 Support Ticket</a>
+                <a href="https://status.veltrionhost.fun/" target="_blank" rel="noopener noreferrer">📊 Uptime Status</a>
+            </div>
+        </div>
+
+        <a href="https://discord.gg/54EtJnjGQD" target="_blank" class="client-btn discord-btn">
+            <i class="fa-brands fa-discord"></i>
+            DISCORD
+        </a>
+    </div>
+</header>
+
+
+<body>
+
+<section class="vps-hero">
+    <h1><span>VPS Hosting</span></h1>
+    <p>High-performance VPS with full root, NVMe, and DDoS protection.</p>
+</section>
+
+<!-- CPU TABS -->
+<div class="vps-cpu-tabs">
+    <button class="cpu-tab active" data-cpu="8269">Intel Platinum 8269-CY</button>
+    <button class="cpu-tab" data-cpu="8168">Intel Platinum 8168</button>
+    <button class="cpu-tab" data-cpu="7k63">AMD EPYC 7K63</button>
+    <button class="cpu-tab" data-cpu="9354p">AMD EPYC 9354P</button>
+</div>
+
+<section class="vps-plans">
+
+<!-- ================= 8269 ================= -->
+<div class="vps-plan-group active" data-cpu="8269">
+
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 1</h3>
+
+    <div class="plan-price">
+        ₹399/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>8 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>2 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>50 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>Intel Platinum 8269-CY</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/intel-platinum-8269-cy-vps/intel-platinum-8269-cy-veltro-1/checkout" class="order-btn">Order Now</a>
+</div> 
+
+
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 2</h3>
+
+    <div class="plan-price">
+        ₹799/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>16 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>4 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>100 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>Intel Platinum 8269-CY</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/intel-platinum-8269-cy-vps/intel-platinum-8269-cy-veltro-2/checkout" class="order-btn">Order Now</a>
+</div> 
+
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 3</h3>
+
+    <div class="plan-price">
+        ₹1199/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>24 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>6 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>150 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>Intel Platinum 8269-CY</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/intel-platinum-8269-cy-vps/intel-platinum-8269-cy-veltro-3/checkout" class="order-btn">Order Now</a>
+</div> 
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 4</h3>
+
+    <div class="plan-price">
+        ₹1399/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>32 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>8 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>200 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>Intel Platinum 8269-CY</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/intel-platinum-8269-cy-vps/intel-platinum-8269-cy-veltro-4/checkout" class="order-btn">Order Now</a>
+</div> 
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 5</h3>
+
+    <div class="plan-price">
+        ₹1799/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>48 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>10 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>250 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>Intel Platinum 8269-CY</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/intel-platinum-8269-cy-vps/intel-platinum-8269-cy-veltro-5/checkout" class="order-btn">Order Now</a>
+</div> 
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 6</h3>
+
+    <div class="plan-price">
+        ₹2199/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>64 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>16 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>300 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>Intel Platinum 8269-CY</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/intel-platinum-8269-cy-vps/intel-platinum-8269-cy-veltro-6/checkout" class="order-btn">Order Now</a>
+</div>
+</div>
+
+<!-- ================= 8168 ================= -->
+<div class="vps-plan-group" data-cpu="8168">
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 1</h3>
+
+    <div class="plan-price">
+        ₹399/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>8 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>2 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>50 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>Intel Platinum 8168</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/intel-platinum-8168-vps/intel-platinum-8168-veltro-1/checkout" class="order-btn">Order Now</a>
+</div> 
+
+
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 2</h3>
+
+    <div class="plan-price">
+        ₹799/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>16 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>4 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>100 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>Intel Platinum 8168</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/intel-platinum-8168-vps/intel-platinum-8168-veltro-2/checkout" class="order-btn">Order Now</a>
+</div> 
+
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 3</h3>
+
+    <div class="plan-price">
+        ₹1199/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>24 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>6 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>150 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>Intel Platinum 8168</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/intel-platinum-8168-vps/intel-platinum-8168-veltro-3/checkout" class="order-btn">Order Now</a>
+</div> 
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 4</h3>
+
+    <div class="plan-price">
+        ₹1399/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>32 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>8 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>200 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>Intel Platinum 8168</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/intel-platinum-8168-vps/intel-platinum-8168-veltro-4/checkout" class="order-btn">Order Now</a>
+</div> 
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 5</h3>
+
+    <div class="plan-price">
+        ₹1799/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>48 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>10 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>250 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>Intel Platinum 8168</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/intel-platinum-8168-vps/intel-platinum-8168-veltro-5/checkout" class="order-btn">Order Now</a>
+</div> 
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 6</h3>
+
+    <div class="plan-price">
+        ₹2199/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>64 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>16 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>300 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>Intel Platinum 8168</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/intel-platinum-8168-vps/intel-platinum-8168-veltro-6/checkout" class="order-btn">Order Now</a>
+</div>
+</div>
+
+<!-- ================= 7K63 ================= -->
+<div class="vps-plan-group" data-cpu="7k63">
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 1</h3>
+
+    <div class="plan-price">
+        ₹599/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>8 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>2 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>50 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>AMD EPYC 7K63</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/amd-epyc-7k63-vps/amd-epyc-7k63-veltro-1/checkout" class="order-btn">Order Now</a>
+</div> 
+
+
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 2</h3>
+
+    <div class="plan-price">
+        ₹999/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>16 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>4 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>100 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>AMD EPYC 7K63</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/amd-epyc-7k63-vps/amd-epyc-7k63-veltro-2/checkout" class="order-btn">Order Now</a>
+</div> 
+
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 3</h3>
+
+    <div class="plan-price">
+        ₹1399/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>24 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>6 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>150 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>AMD EPYC 7K63</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/amd-epyc-7k63-vps/amd-epyc-7k63-veltro-3/checkout" class="order-btn">Order Now</a>
+</div> 
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 4</h3>
+
+    <div class="plan-price">
+        ₹1799/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>32 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>8 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>200 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>AMD EPYC 7K63</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/amd-epyc-7k63-vps/amd-epyc-7k63-veltro-4/checkout" class="order-btn">Order Now</a>
+</div> 
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 5</h3>
+
+    <div class="plan-price">
+        ₹2199/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>48 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>10 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>250 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>AMD EPYC 7K63</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/amd-epyc-7k63-vps/amd-epyc-7k63-veltro-5/checkout" class="order-btn">Order Now</a>
+</div> 
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 6</h3>
+
+    <div class="plan-price">
+        ₹2499/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>64 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>16 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>300 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>1 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>AMD EPYC 7K63</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Delhi</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/amd-epyc-7k63-vps/amd-epyc-7k63-veltro-6/checkout" class="order-btn">Order Now</a>
+</div>
+</div>
+
+<!-- ================= 9354P ================= -->
+<div class="vps-plan-group" data-cpu="9354p">
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 1</h3>
+
+    <div class="plan-price">
+        ₹2799/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>32 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>8 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>300 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>8 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>AMD EPYC 9354P</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Mumbai</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/amd-epyc-9354p-vps/amd-epyc-9354p-veltro-1/checkout" class="order-btn">Order Now</a>
+</div> 
+<div class="vps-plan-card">
+    <h3 class="plan-title">VELTRO 2</h3>
+
+    <div class="plan-price">
+        ₹5399/m
+    </div>
+
+    <ul class="plan-specs">
+        <li><i class="fa-solid fa-memory"></i> RAM: <strong>64 GB DDR4</strong></li>
+        <li><i class="fa-solid fa-microchip"></i> CPU: <strong>16 vCore</strong></li>
+        <li><i class="fa-solid fa-hard-drive"></i> Disk: <strong>400 GB SSD</strong></li>
+        <li><i class="fa-solid fa-network-wired"></i> Bandwidth: <strong>8 TB</strong></li>
+        <li><i class="fa-solid fa-bolt"></i> Processor: <strong>AMD EPYC 9354P</strong></li>
+        <li><i class="fa-solid fa-location-dot"></i> Location: <strong>India – Mumbai</strong></li>
+        <li><i class="fa-solid fa-shield-halved"></i> Protection: <strong>Advanced DDoS Protection</strong></li>
+    </ul>
+
+    <a href="https://billing.veltrionhost.fun/products/amd-epyc-9354p-vps/amd-epyc-9354p-veltro-2/checkout" class="order-btn">Order Now</a>
+</div>
+</div>
+
+</section>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+const tabs = document.querySelectorAll('.cpu-tab');
+const groups = document.querySelectorAll('.vps-plan-group');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        groups.forEach(g => g.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.querySelector(`.vps-plan-group[data-cpu="${tab.dataset.cpu}"]`)
+            .classList.add('active');
+    });
+});
+</script>
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <!-- LEFT -->
+<div class="footer-left">
+    <div class="footer-logo">
+        <img src="images/logo.png" alt="Veltrion Hosting Logo" class="footer-logo-img">
+        <div class="logo-text">
+            <strong>Veltrion Hosting</strong>
+            <span>Premium Game & Cloud Hosting</span>
+        </div>
+    </div>
+</div>
+
+
+        <!-- CENTER -->
+        <div class="footer-center">
+            © 2026 Veltrion Hosting. All Rights Reserved.
+        </div>
+
+        <!-- RIGHT -->
+        <div class="footer-right">
+            <a href="mailto:support@veltrionhost.fun">
+                <i class="fa-solid fa-envelope"></i>
+                support@veltrionhost.fun
+            </a>
+            <a href="https://discord.gg/54EtJnjGQD" target="_blank">
+                <i class="fa-brands fa-discord"></i>
+                Discord
+            </a>
+        </div>
+
+    </div>
+</footer>
+
+
+</body>
+</html>

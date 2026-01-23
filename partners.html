@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Partners & Affiliates | Veltrion Hosting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- MAIN SITE CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- FONTS & ICONS -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    color: #e5e7eb;
+
+    /* Base deep navy-purple */
+    background:
+        radial-gradient(
+            ellipse at top,
+            #1a0f3d 0%,
+            #140b33 35%,
+            #0c071f 65%,
+            #05030f 100%
+        );
+
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.03) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.03) 1px,
+            transparent 1px
+        );
+    background-size: 4px 4px;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container,
+header,
+section,
+main {
+    position: relative;
+    z-index: 1;
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #1a0033 0%,
+            #0d021f 60%,
+            #05010d 100%
+        );
+
+    padding: 26px 0;
+}
+
+/* TOP DIVIDER LINE */
+.site-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(168,85,247,.45),
+        transparent
+    );
+}
+
+/* INNER */
+.footer-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 24px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+
+    color: #cbd5f5;
+    font-size: 13px;
+}
+
+/* LEFT */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: #020617;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text strong {
+    font-size: 14px;
+    color: #e5e7eb;
+}
+
+.logo-text span {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* CENTER */
+.footer-center {
+    text-align: center;
+    opacity: 0.6;
+    font-size: 12px;
+}
+
+/* RIGHT */
+.footer-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 22px;
+}
+
+.footer-right a {
+    color: #cbd5f5;
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.85;
+}
+
+.footer-right a:hover {
+    opacity: 1;
+    color: #a78bfa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 14px;
+    }
+
+    .footer-right {
+        justify-content: center;
+    }
+
+    .footer-left {
+        justify-content: center;
+        display: flex;
+    }
+}
+
+
+/* PAGE WRAPPER */
+.page-content {
+    padding: 100px 24px;
+}
+
+/* HERO */
+.partners-hero {
+    text-align: center;
+    max-width: 900px;
+    margin: auto;
+    margin-bottom: 80px;
+}
+
+.partners-hero span {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #a78bfa;
+    opacity: 0.9;
+}
+
+.partners-hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 12px 0;
+}
+
+.partners-hero h1 b {
+    color: #a78bfa;
+}
+
+.partners-hero p {
+    font-size: 15px;
+    opacity: 0.75;
+    line-height: 1.6;
+}
+
+/* INFO GRID */
+.partner-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+}
+
+/* CARD */
+.partner-card {
+    background: linear-gradient(180deg, #0b0f19, #020617);
+    border-radius: 18px;
+    padding: 28px;
+    text-align: center;
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.6),
+        0 0 30px rgba(124,58,237,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partner-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.85),
+        0 0 40px rgba(124,58,237,0.4);
+}
+
+.partner-card i {
+    font-size: 32px;
+    color: #a78bfa;
+    margin-bottom: 14px;
+}
+
+.partner-card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.partner-card p {
+    font-size: 13px;
+    opacity: 0.75;
+    line-height: 1.5;
+}
+
+/* CTA */
+.partner-cta {
+    text-align: center;
+    margin-top: 90px;
+}
+
+.partner-cta h2 {
+    font-size: 28px;
+    margin-bottom: 14px;
+}
+
+.partner-cta p {
+    font-size: 14px;
+    opacity: 0.75;
+    margin-bottom: 24px;
+}
+
+/* AFFILIATE SECTION */
+.affiliate-section {
+    max-width: 1200px;
+    margin: 120px auto 0;
+    text-align: center;
+}
+
+.affiliate-section h2 {
+    font-size: 34px;
+    color: #a78bfa;
+    margin-bottom: 10px;
+}
+
+.affiliate-subtitle {
+    font-size: 14px;
+    opacity: 0.75;
+    max-width: 700px;
+    margin: 0 auto 50px;
+}
+
+.affiliate-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.affiliate-card {
+    background: linear-gradient(180deg, #0b0f19, #020617);
+    padding: 26px;
+    border-radius: 18px;
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.6),
+        0 0 30px rgba(124,58,237,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.affiliate-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.85),
+        0 0 40px rgba(124,58,237,0.4);
+}
+
+.affiliate-card i {
+    font-size: 26px;
+    color: #a78bfa;
+    margin-bottom: 14px;
+}
+
+.affiliate-card h4 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.affiliate-card p {
+    font-size: 12.5px;
+    opacity: 0.7;
+    line-height: 1.5;
+}
+
+/* REQUIREMENTS */
+.affiliate-requirements {
+    background: linear-gradient(180deg, #0b0f19, #020617);
+    border-radius: 18px;
+    padding: 26px;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    text-align: left;
+}
+
+.affiliate-requirements h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.affiliate-requirements ul {
+    list-style: none;
+    padding: 0;
+}
+
+.affiliate-requirements li {
+    font-size: 13px;
+    opacity: 0.8;
+    margin-bottom: 8px;
+}
+
+.affiliate-requirements li::before {
+    content: "•";
+    color: #a78bfa;
+    margin-right: 8px;
+}
+
+/* PARTNER PROGRAM */
+.partner-program {
+    max-width: 1200px;
+    margin: 140px auto 0;
+    text-align: center;
+}
+
+.partner-title {
+    font-size: 32px;
+    color: #a78bfa;
+    margin-bottom: 8px;
+}
+
+.partner-subtitle {
+    font-size: 14px;
+    opacity: 0.75;
+    max-width: 720px;
+    margin: 0 auto 50px;
+}
+
+.partner-tiers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    margin-bottom: 60px;
+}
+
+.partner-tier {
+    background: linear-gradient(180deg, #0b0f19, #020617);
+    border-radius: 18px;
+    padding: 26px;
+    text-align: left;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.partner-tier h3 {
+    margin: 10px 0 6px;
+}
+
+.tier-req {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.partner-tier ul {
+    margin-top: 14px;
+    padding-left: 18px;
+}
+
+.partner-tier li {
+    font-size: 13px;
+    opacity: 0.8;
+    margin-bottom: 6px;
+}
+
+.tier-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.bronze-icon { background: #7c2d12; }
+.silver-icon { background: #374151; }
+.gold-icon { background: #f59e0b; }
+
+/* CURRENT PARTNERS */
+.current-title {
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.current-partners {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.partner-badge {
+    background: #0b0f19;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.badge.gold { background: #f59e0b; color: #000; }
+.badge.silver { background: #9ca3af; color: #000; }
+.badge.bronze { background: #92400e; color: #fff; }
+
+/* DIAMOND PARTNER */
+.partner-tier.diamond {
+    border: 1px solid rgba(56,189,248,0.35);
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.7),
+        0 0 45px rgba(56,189,248,0.45);
+}
+
+.diamond-icon {
+    background: linear-gradient(135deg, #22d3ee, #3b82f6);
+    color: #020617;
+    box-shadow: 0 0 25px rgba(56,189,248,0.7);
+}
+
+
+
+
+/* CTA */
+.affiliate-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #7c3aed, #22c55e);
+    color: #020617;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 0 30px rgba(124,58,237,0.5);
+    transition: transform 0.25s ease;
+}
+
+.affiliate-cta a:hover {
+    transform: scale(1.06);
+}
+
+/* CURRENT AFFILIATES */
+.current-affiliates {
+    text-align: center;
+    margin: 70px 0 80px;
+}
+
+.current-affiliates h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #a78bfa;
+    margin-bottom: 24px;
+}
+
+.affiliate-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.affiliate-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #0b0f19, #020617);
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.6),
+        0 0 18px rgba(124,58,237,0.25);
+    font-size: 13px;
+    font-weight: 500;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.affiliate-badge:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.8),
+        0 0 25px rgba(124,58,237,0.45);
+}
+
+.badge-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7c3aed, #22c55e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.badge-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* 🔥 fills the circle */
+    border-radius: 50%;
+}
+
+
+.partner-cta a {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #7c3aed, #22c55e);
+    color: #020617;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 0 30px rgba(124,58,237,0.5);
+    transition: transform 0.25s ease;
+}
+
+.partner-cta a:hover {
+    transform: scale(1.05);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .partners-hero h1 {
+        font-size: 32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER (COPY EXACT SAME HEADER FROM index.html) -->
+<header class="navbar">
+    <div class="nav-left">
+        <div class="logo">
+            <img src="logo.png" alt="Veltrion Hosting Logo" class="logo-img">
+            <span class="logo-text">Veltrion Hosting</span>
+        </div>
+
+        <!-- HOME -->
+        <div class="nav-links">
+            <a href="/" class="home-link">Home</a>
+        </div>
+
+        <!-- SERVICES -->
+        <div class="services-btn-wrapper nav-links">
+            <a href="#" class="services-link">
+                Services <span class="services-arrow">▾</span>
+            </a>
+
+            <div class="services-dropdown">
+                <a href="gameplans.html" class="service-card">
+                    <div class="service-icon">🎮</div>
+                    <div class="service-text">
+                        <strong>Game Hosting</strong>
+                        <span>Minecraft & game servers</span>
+                    </div>
+                </a>
+
+                <a href="vpsplans.html" class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <div class="service-text">
+                        <strong>VPS Hosting</strong>
+                        <span>High-performance virtual servers</span>
+                    </div>
+                </a>
+
+                <a href="botplans.html" class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <div class="service-text">
+                        <strong>Bot Hosting</strong>
+                        <span>24/7 Discord bot hosting</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ABOUT VELTRION -->
+<div class="about-btn-wrapper nav-links">
+    <a href="#" class="about-link">
+        About Veltrion <span class="about-arrow">▾</span>
+    </a>
+
+    <div class="about-dropdown">
+        <a href="about.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-circle-info"></i></div>
+            <div class="about-text">
+                <strong>About Us</strong>
+                <span>Our story & mission</span>
+            </div>
+        </a>
+
+        <a href="terms.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-file-contract"></i></div>
+            <div class="about-text">
+                <strong>Terms of Service</strong>
+                <span>Our terms & conditions</span>
+            </div>
+        </a>
+        <a href="partners.html" class="about-card">
+    <div class="about-icon">
+        <i class="fa-solid fa-users"></i>
+    </div>
+    <div class="about-text">
+        <strong>Partners</strong>
+        <span>Our trusted partners</span>
+    </div>
+</a>
+
+        <a href="datacenters.html" class="about-card">
+    <div class="about-icon">
+        <i class="fa-solid fa-server"></i>
+    </div>
+    <div class="about-text">
+        <strong>Datacenters</strong>
+        <span>Global infrastructure</span>
+    </div>
+</a>
+
+
+        <a href="privacy.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="about-text">
+                <strong>Privacy Policy</strong>
+                <span>How we handle your data</span>
+            </div>
+        </a>
+
+        <a href="refund.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-rotate-left"></i></div>
+            <div class="about-text">
+                <strong>Refund Policy</strong>
+                <span>Our policy on refunds</span>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+        <!-- SUPPORT (MOVED HERE ✅) -->
+        <div class="support-btn-wrapper nav-links">
+            <a href="#" class="support-link">
+                Support <span class="support-arrow">▾</span>
+            </a>
+
+            <div class="support-dropdown">
+                <a href="contact.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="support-text">
+                        <strong>Contact Us</strong>
+                        <span>Get in touch with us</span>
+                    </div>
+                </a>
+
+                <a href="faq.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-circle-question"></i></div>
+                    <div class="support-text">
+                        <strong>FAQ</strong>
+                        <span>Get expert advice</span>
+                    </div>
+                </a>
+
+                <a href="tutorials.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-book"></i></div>
+                    <div class="support-text">
+                        <strong>Tutorials</strong>
+                        <span>Step-by-step guides</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="nav-right">
+        <div class="panel-btn-wrapper">
+            <a href="#" class="panel-btn">
+                Panels <span class="panel-arrow">▾</span>
+            </a>
+
+            <div class="dropdown-menu">
+                <a href="https://portal.veltrionhost.fun/" target="_blank" rel="noopener noreferrer">🎮 Game Panel</a>
+                <a href="https://discord.gg/54EtJnjGQD" target="_blank" rel="noopener noreferrer">🎫 Support Ticket</a>
+                <a href="https://status.veltrionhost.fun/" target="_blank" rel="noopener noreferrer">📊 Uptime Status</a>
+            </div>
+        </div>
+
+        <a href="https://discord.gg/54EtJnjGQD" target="_blank" class="client-btn discord-btn">
+            <i class="fa-brands fa-discord"></i>
+            DISCORD
+        </a>
+    </div>
+</header>
+
+<div class="page-content">
+
+    <!-- HERO -->
+    <section class="partners-hero">
+        <span>JOIN OUR NETWORK</span>
+        <h1>Partners & <b>Affiliates</b></h1>
+        <p>
+            Partner with <strong>Veltrion Hosting</strong> and grow together.
+            Our affiliate and partnership programs are built for content creators,
+            developers, communities, and businesses looking to scale.
+        </p>
+    </section>
+
+    <!-- INFO GRID -->
+    <section class="partner-grid">
+
+        <div class="partner-card">
+            <i class="fa-solid fa-handshake"></i>
+            <h3>Official Partnerships</h3>
+            <p>
+                Long-term collaborations with brands, networks,
+                and infrastructure providers.
+            </p>
+        </div>
+
+        <div class="partner-card">
+            <i class="fa-solid fa-bullhorn"></i>
+            <h3>Affiliate Program</h3>
+            <p>
+                Earn commissions by promoting Veltrion Hosting
+                to your audience.
+            </p>
+        </div>
+
+        <div class="partner-card">
+            <i class="fa-solid fa-users"></i>
+            <h3>Community Partners</h3>
+            <p>
+                Special benefits for Minecraft communities,
+                Discord servers, and creators.
+            </p>
+        </div>
+
+        <div class="partner-card">
+            <i class="fa-solid fa-server"></i>
+            <h3>Infrastructure Allies</h3>
+            <p>
+                Datacenter and technology partnerships
+                to ensure maximum performance.
+            </p>
+        </div>
+
+    </section>
+    <section class="affiliate-section">
+    <h2>Affiliate Program</h2>
+    <p class="affiliate-subtitle">
+        Earn commission by referring new customers to <b>Veltrion Hosting</b>.
+        Share your unique referral link and earn for every successful signup!
+    </p>
+
+    <div class="affiliate-features">
+
+        <div class="affiliate-card">
+            <i class="fa-solid fa-percent"></i>
+            <h4>10% Commission</h4>
+            <p>Earn 10% on every purchase made through your referral link.</p>
+        </div>
+
+        <div class="affiliate-card">
+            <i class="fa-solid fa-arrows-rotate"></i>
+            <h4>Recurring Earnings</h4>
+            <p>Earn commission on renewals for the lifetime of the customer.</p>
+        </div>
+
+        <div class="affiliate-card">
+            <i class="fa-solid fa-chart-line"></i>
+            <h4>Real-time Dashboard</h4>
+            <p>Track referrals, earnings, and payouts in real-time.</p>
+        </div>
+
+        <div class="affiliate-card">
+            <i class="fa-solid fa-wallet"></i>
+            <h4>Monthly Payouts</h4>
+            <p>Get severs with the credits earned.</p>
+        </div>
+
+    </div>
+
+    <div class="affiliate-requirements">
+        <h3>Requirements</h3>
+        <ul>
+            <li>Active Discord account</li>
+            <li>Platform to share referral links (Website, YouTube, Discord, etc.)</li>
+            <li>Genuine interest in promoting quality hosting</li>
+            <li>No spam or misleading marketing tactics</li>
+        </ul>
+    </div>
+
+    <div class="affiliate-cta">
+        <a href="contact.html">
+            <i class="fa-solid fa-user-plus"></i>
+            Join Affiliate Program
+        </a>
+    </div>
+</section>
+
+<!-- CURRENT AFFILIATES -->
+<section class="current-affiliates">
+    <h3>Current Affiliates</h3>
+
+    <div class="affiliate-badges">
+        <div class="affiliate-badge">
+            <span class="badge-icon">
+                <img src="images/thunder.png" alt="Thunder Logo">
+            </span>
+            <span>THUNDER</span>
+        </div>
+
+        <div class="affiliate-badge">
+            <span class="badge-icon">
+                <img src="images/rishav.png" alt="Rishav Logo">
+            </span>
+            <span>ITZ_RISHAV</span>
+        </div>
+
+        <div class="affiliate-badge">
+            <span class="badge-icon">
+                <img src="images/vnyvrs.png" alt="Vinay Verse Logo">
+            </span>
+            <span>VINAY VERSE</span>
+        </div>
+
+        <div class="affiliate-badge">
+            <span class="badge-icon">
+                <img src="images/notcos.png" alt="Not Cos Logo">
+            </span>
+            <span>NOT_COS</span>
+        </div>
+    </div>
+</section>
+
+
+<section class="partner-program">
+
+    <h2 class="partner-title">Partner Program</h2>
+    <p class="partner-subtitle">
+        For content creators, gaming communities, and businesses looking for a deeper
+        partnership with <b>Veltrion Hosting</b>.
+    </p>
+
+    <div class="partner-tiers">
+
+        <!-- BRONZE -->
+        <div class="partner-tier bronze">
+            <div class="tier-icon bronze-icon">🏅</div>
+            <h3>Bronze Partner</h3>
+            <span class="tier-req">1,000+ Subscribers</span>
+            <ul>
+                <li>Partner badge</li>
+                <li>Priority support</li>
+                <li>Exclusive partner chat</li>
+            </ul>
+        </div>
+
+        <!-- SILVER -->
+        <div class="partner-tier silver">
+            <div class="tier-icon silver-icon">🔰</div>
+            <h3>Silver Partner</h3>
+            <span class="tier-req">5,000+ Subscribers</span>
+            <ul>
+                <li>All Bronze benefits</li>
+                <li>Free hosting for content</li>
+                <li>Featured on website</li>
+            </ul>
+        </div>
+
+        <!-- GOLD -->
+        <div class="partner-tier gold">
+            <div class="tier-icon gold-icon">👑</div>
+            <h3>Gold Partner</h3>
+            <span class="tier-req">20,000+ Subscribers</span>
+            <ul>
+                <li>All Silver benefits</li>
+                <li>Custom solutions</li>
+                <li>Dedicated account manager</li>
+                <li>Co-marketing opportunities</li>
+            </ul>
+        </div>
+
+        <!-- DIAMOND -->
+        <div class="partner-tier diamond">
+            <div class="tier-icon diamond-icon">💎</div>
+            <h3>Diamond Partner</h3>
+            <span class="tier-req">50,000+ Subscribers</span>
+            <ul>
+                <li>All Gold benefits</li>
+                <li>Custom enterprise solutions</li>
+                <li>Dedicated account manager</li>
+                <li>Priority infrastructure access</li>
+                <li>Co-marketing & sponsorship opportunities</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <h3 class="current-title">Current Partners</h3>
+
+    <div class="affiliate-badges">
+        <div class="affiliate-badge">
+            <span class="badge-icon">
+                <img src="images/vish.jpg" alt="Vishonous Logo">
+            </span>
+            <span>VISHONOUS</span>
+        </div>
+
+        <div class="affiliate-badge">
+            <span class="badge-icon">
+                <img src="images/rjay.jpg" alt="MrRJay Logo">
+            </span>
+            <span>MrRJay</span>
+        </div>
+</section>
+
+
+
+    <!-- CTA -->
+    <section class="partner-cta">
+        <h2>Want to Partner With Us?</h2>
+        <p>
+            Reach out to our team and let’s build something amazing together.
+        </p>
+        <a href="contact.html">Contact Veltrion</a>
+    </section>
+
+
+</div>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <!-- LEFT -->
+<div class="footer-left">
+    <div class="footer-logo">
+        <img src="images/logo.png" alt="Veltrion Hosting Logo" class="footer-logo-img">
+        <div class="logo-text">
+            <strong>Veltrion Hosting</strong>
+            <span>Premium Game & Cloud Hosting</span>
+        </div>
+    </div>
+</div>
+
+
+        <!-- CENTER -->
+        <div class="footer-center">
+            © 2026 Veltrion Hosting. All Rights Reserved.
+        </div>
+
+        <!-- RIGHT -->
+        <div class="footer-right">
+            <a href="mailto:support@veltrionhost.fun">
+                <i class="fa-solid fa-envelope"></i>
+                support@veltrionhost.fun
+            </a>
+            <a href="https://discord.gg/54EtJnjGQD" target="_blank">
+                <i class="fa-brands fa-discord"></i>
+                Discord
+            </a>
+        </div>
+
+    </div>
+</footer>
+</body>
+</html>

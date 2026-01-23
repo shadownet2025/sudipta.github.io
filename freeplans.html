@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Veltrion Hosting – Free Minecraft Hosting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- NAVBAR CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- PAGE CSS (HERO + FOOTER ONLY) -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top left, #0a102a, #3b0f66 45%, #1b0736);
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+        }
+.navbar {
+    width: 100%;
+    padding: 14px 12px;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(14px);
+    background: rgba(5,5,20,.65);
+}
+
+.nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.features-section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.features-subtitle {
+    font-size: 16px;
+    color: #cfd3ff;
+    max-width: 650px;
+    margin: 0 auto 60px;
+    line-height: 1.6;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.feature-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 14px;
+    padding: 26px;
+    text-align: left;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.25);
+}
+
+.feature-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(0,255,160,0.15);
+    color: #00ffa2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 14px;
+}
+
+.feature-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.feature-card span {
+    font-size: 13px;
+    color: #b8beff;
+}
+
+/* ================= CONTROL PANEL SECTION ================= */
+.panel-section {
+    padding: 110px 20px;
+}
+
+.panel-content {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.panel-text h2 {
+    font-size: 34px;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.panel-text p {
+    font-size: 16px;
+    color: #cfd3ff;
+    max-width: 520px;
+    margin-bottom: 26px;
+    line-height: 1.6;
+}
+
+.panel-features {
+    list-style: none;
+}
+
+.panel-features li {
+    margin-bottom: 12px;
+    color: #d6dbff;
+    font-size: 14px;
+    position: relative;
+    padding-left: 26px;
+}
+
+.panel-features li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #00ffa2;
+    font-weight: bold;
+}
+
+/* MOCKUP */
+.panel-window {
+    background: linear-gradient(180deg, #1b2333, #121a28);
+    border-radius: 14px;
+    box-shadow: 0 25px 60px rgba(0,0,0,.35);
+    overflow: hidden;
+}
+
+.panel-header {
+    background: #0f172a;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #cbd5f5;
+    font-size: 12px;
+}
+
+.panel-title {
+    margin-left: 10px;
+    opacity: .8;
+    flex: 1;
+}
+
+.panel-status {
+    color: #22c55e;
+    font-size: 12px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot.red { background: #ef4444; }
+.dot.yellow { background: #facc15; }
+.dot.green { background: #22c55e; }
+
+.panel-body {
+    padding: 20px;
+}
+
+.panel-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: default;
+}
+
+.btn.start { background: #22c55e; color: #052e16; }
+.btn.stop { background: #020617; color: #cbd5f5; }
+.btn.restart { background: #020617; color: #cbd5f5; }
+
+.panel-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.stat-box {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 12px;
+}
+
+.stat-box span {
+    color: #9aa0ff;
+}
+
+.stat-box strong {
+    display: block;
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+.progress span {
+    font-size: 12px;
+    color: #9aa0ff;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 99px;
+    margin: 6px 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 67%;
+    height: 100%;
+    background: linear-gradient(90deg, #00ffa2, #22c55e);
+}
+
+.progress small {
+    font-size: 11px;
+    color: #cbd5f5;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .panel-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .panel-text p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .panel-features li {
+        text-align: left;
+    }
+}
+
+/* ================= PRICING ================= */
+.pricing-section {
+    padding: 110px 20px;
+    text-align: center;
+}
+
+.pricing-section h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.pricing-subtitle {
+    font-size: 16px;
+    color: #cfd3ff;
+    margin-bottom: 60px;
+}
+
+/* CENTER CONTAINER */
+.pricing-single {
+    display: flex;
+    justify-content: center;
+}
+
+/* CARD */
+.pricing-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 32px 28px;
+    width: 340px;
+    border: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+}
+
+.pricing-card.featured {
+    box-shadow: 0 0 0 1px rgba(0,255,160,.35),
+                0 25px 60px rgba(0,0,0,.35);
+}
+
+/* BADGE */
+.badge-top {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #00ffa2;
+    color: #05291c;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+}
+
+/* PRICE */
+.price {
+    font-size: 36px;
+    font-weight: 800;
+    margin: 16px 0 20px;
+}
+
+.price span {
+    font-size: 14px;
+    color: #9aa0ff;
+}
+
+/* FEATURES */
+.pricing-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 26px;
+}
+
+.pricing-features li {
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding-left: 22px;
+    position: relative;
+}
+
+.pricing-features li::before {
+    content: "✔";
+    color: #00ffa2;
+    position: absolute;
+    left: 0;
+}
+
+/* BUTTON */
+.pricing-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg,#00ffa2,#00d47c);
+    color: #05291c;
+    font-weight: 700;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: .25s;
+}
+
+.pricing-btn:hover {
+    box-shadow: 0 0 30px rgba(0,255,160,.6);
+    transform: translateY(-2px);
+}
+
+/* ================= FAQ SECTION ================= */
+.faq-section {
+    padding: 110px 20px;
+    text-align: center;
+}
+
+.faq-section h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.faq-subtitle {
+    font-size: 16px;
+    color: #cfd3ff;
+    max-width: 650px;
+    margin: 0 auto 60px;
+    line-height: 1.6;
+}
+
+.faq-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 26px;
+}
+
+.faq-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 14px;
+    padding: 26px 28px;
+    text-align: left;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.faq-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.faq-card p {
+    font-size: 14px;
+    color: #b8beff;
+    line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================= CTA SECTION ================= */
+.cta-section {
+    padding: 110px 20px;
+}
+
+.cta-box {
+    max-width: 1100px;
+    margin: auto;
+    padding: 70px 30px;
+    text-align: center;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #4c1d95, #2e1065);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 25px 70px rgba(0,0,0,.4);
+}
+
+.cta-box h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.cta-box p {
+    font-size: 16px;
+    color: #d8d9ff;
+    max-width: 720px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+}
+
+.cta-main-btn {
+    display: inline-block;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #00ffa2, #00d47c);
+    color: #05291c;
+    font-weight: 700;
+    border-radius: 14px;
+    text-decoration: none;
+    box-shadow: 0 0 35px rgba(0,255,160,.6);
+    transition: all .25s ease;
+}
+
+.cta-main-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 55px rgba(0,255,160,.85);
+}
+
+.cta-note {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #c7c9ff;
+    opacity: 0.9;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .cta-box {
+        padding: 50px 22px;
+    }
+
+    .cta-box h2 {
+        font-size: 28px;
+    }
+}
+
+
+
+        /* ================= HERO ================= */
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .badge {
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: rgba(0,255,160,.12);
+            border: 1px solid rgba(0,255,160,.35);
+            color: #00ffa2;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span { color: #00ffa2; }
+
+        .hero p {
+            font-size: 18px;
+            color: #cfd3ff;
+            max-width: 780px;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .hero p strong { color: #00ffa2; }
+
+        .cta-wrap {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-bottom: 55px;
+            justify-content: center;
+        }
+
+        .cta-btn {
+            padding: 16px 28px;
+            background: linear-gradient(135deg,#00ffa2,#00d47c);
+            color: #05291c;
+            font-weight: 700;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 0 35px rgba(0,255,160,.45);
+            transition: .25s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 55px rgba(0,255,160,.7);
+        }
+
+        .no-card { color:#9aa0ff; font-size:14px; }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+            gap: 40px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .feature h3 { color:#00ffa2; font-size:22px; }
+        .feature span { color:#b8beff; font-size:14px; }
+
+        /* ================= FOOTER ================= */
+        .site-footer {
+            background: radial-gradient(ellipse,#1a0033,#05010d);
+            padding: 26px 0;
+        }
+
+        .footer-inner {
+            max-width:1200px;
+            margin:auto;
+            padding:0 24px;
+            display:grid;
+            grid-template-columns:1fr auto 1fr;
+            align-items:center;
+            gap:20px;
+            font-size:13px;
+            color:#cbd5f5;
+        }
+
+        .footer-logo { display:flex; gap:12px; align-items:center; }
+        .footer-logo-img { width:36px; height:36px; border-radius:8px; }
+        .footer-center { text-align:center; opacity:.6; font-size:12px; }
+        .footer-right { display:flex; gap:22px; justify-content:flex-end; }
+        .footer-right a { color:#cbd5f5; text-decoration:none; gap:6px; display:flex; }
+
+        @media(max-width:900px){
+            .footer-inner{grid-template-columns:1fr;text-align:center;}
+            .footer-right{justify-content:center;}
+        }
+
+/* ================= TRUSTPILOT BUTTON ================= */
+.trustpilot-section {
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    position: relative;
+
+    padding: 28px 0 36px;   /* compact height */
+    display: flex;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.0),
+            rgba(0,0,0,0.25)
+        );
+}
+
+.trustpilot-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 12px 20px;
+    background: #ffffff;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+
+    text-decoration: none;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.35);
+
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.trustpilot-btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 16px 40px rgba(0,0,0,.45);
+}
+
+.tp-star {
+    color: #00b67a; /* Trustpilot green */
+    font-size: 16px;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .support-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .support-left p {
+        margin: auto;
+    }
+
+    .support-chat {
+        align-items: center;
+    }
+
+    .chat-bubble {
+        align-self: center !important;
+    }
+}
+
+
+
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+    <div class="nav-left">
+        <!-- HOME -->
+        <div class="logo">
+            <a href="/" class="logo-link">
+                <img src="logo.png" alt="Veltrion Hosting Logo" class="logo-img">
+                <span class="logo-text">Veltrion Hosting</span>
+            </a>
+        </div>
+
+        <!-- SERVICES -->
+        <div class="services-btn-wrapper nav-links">
+            <a href="#" class="services-link">
+                Services <span class="services-arrow">▾</span>
+            </a>
+
+
+            <div class="services-dropdown">
+                <a href="freeplans.html" class="service-card">
+                    <div class="service-icon">🆓</div>
+                    <div class="service-text">
+                        <strong>Free Hosting</strong>
+                        <span>Minecraft & game servers</span>
+                    </div>
+                </a>
+
+                <a href="gameplans.html" class="service-card">
+                    <div class="service-icon">🎮</div>
+                    <div class="service-text">
+                        <strong>Game Hosting</strong>
+                        <span>Minecraft & game servers</span>
+                    </div>
+                </a>
+
+                <a href="vpsplans.html" class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <div class="service-text">
+                        <strong>VPS Hosting</strong>
+                        <span>High-performance virtual servers</span>
+                    </div>
+                </a>
+
+                <a href="botplans.html" class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <div class="service-text">
+                        <strong>Bot Hosting</strong>
+                        <span>24/7 Discord bot hosting</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ABOUT VELTRION -->
+<div class="about-btn-wrapper nav-links">
+    <a href="#" class="about-link">
+        About Veltrion <span class="about-arrow">▾</span>
+    </a>
+
+    <div class="about-dropdown">
+        <a href="about.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-circle-info"></i></div>
+            <div class="about-text">
+                <strong>About Us</strong>
+                <span>Our story & mission</span>
+            </div>
+        </a>
+
+        <a href="terms.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-file-contract"></i></div>
+            <div class="about-text">
+                <strong>Terms of Service</strong>
+                <span>Our terms & conditions</span>
+            </div>
+        </a>
+        <a href="partners.html" class="about-card">
+    <div class="about-icon">
+        <i class="fa-solid fa-users"></i>
+    </div>
+    <div class="about-text">
+        <strong>Partners</strong>
+        <span>Our trusted partners</span>
+    </div>
+</a>
+
+        <a href="datacenters.html" class="about-card">
+    <div class="about-icon">
+        <i class="fa-solid fa-server"></i>
+    </div>
+    <div class="about-text">
+        <strong>Datacenters</strong>
+        <span>Global infrastructure</span>
+    </div>
+</a>
+
+
+        <a href="privacy.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="about-text">
+                <strong>Privacy Policy</strong>
+                <span>How we handle your data</span>
+            </div>
+        </a>
+
+        <a href="refund.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-rotate-left"></i></div>
+            <div class="about-text">
+                <strong>Refund Policy</strong>
+                <span>Our policy on refunds</span>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+        <!-- SUPPORT (MOVED HERE ✅) -->
+        <div class="support-btn-wrapper nav-links">
+            <a href="#" class="support-link">
+                Support <span class="support-arrow">▾</span>
+            </a>
+
+            <div class="support-dropdown">
+                <a href="contact.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="support-text">
+                        <strong>Contact Us</strong>
+                        <span>Get in touch with us</span>
+                    </div>
+                </a>
+
+                <a href="faq.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-circle-question"></i></div>
+                    <div class="support-text">
+                        <strong>FAQ</strong>
+                        <span>Get expert advice</span>
+                    </div>
+                </a>
+
+                <a href="tutorials.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-book"></i></div>
+                    <div class="support-text">
+                        <strong>Tutorials</strong>
+                        <span>Step-by-step guides</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="nav-right">
+        <div class="panel-btn-wrapper">
+            <a href="#" class="panel-btn">
+                Panels <span class="panel-arrow">▾</span>
+            </a>
+
+            <div class="dropdown-menu">
+                <a href="https://portal.veltrionhost.fun/" target="_blank" rel="noopener noreferrer">🎮 Game Panel</a>
+                <a href="https://billing.veltrionhost.fun/dashboard" target="_blank" rel="noopener noreferrer">🏠 Dashboard</a>
+                <a href="https://discord.gg/54EtJnjGQD" target="_blank" rel="noopener noreferrer">🎫 Support Ticket</a>
+                <a href="https://status.veltrionhost.fun/" target="_blank" rel="noopener noreferrer">📊 Uptime Status</a>
+            </div>
+        </div>
+
+        <a href="https://discord.gg/54EtJnjGQD" target="_blank" class="client-btn discord-btn">
+            <i class="fa-brands fa-discord"></i>
+            DISCORD
+        </a>
+    </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+    <div class="badge">🎁 ONLY ₹2 – ANTI-ABUSE FEE</div>
+    <h1><span>Free Minecraft</span><br>Hosting</h1>
+    <p>
+        Start your Minecraft journey with our powerful hosting plan for just ₹2.
+        <strong>4GB RAM</strong>, <strong>150% CPU power</strong>,
+        <strong>unlimited players and plugins</strong>.
+    </p>
+
+    <div class="cta-wrap">
+        <a href="#pricing" class="cta-btn">🚀 Get Your Free Server Now</a>
+        <div class="no-card">✔ No credit card required</div>
+    </div>
+
+    <div class="features">
+        <div class="feature"><h3>4GB</h3><span>DDR4 RAM</span></div>
+        <div class="feature"><h3>150%</h3><span>CPU Power</span></div>
+        <div class="feature"><h3>∞</h3><span>Players</span></div>
+        <div class="feature"><h3>∞</h3><span>Plugins</span></div>
+    </div>
+</section>
+<section class="features-section">
+    <h2>Everything You Need to Start</h2>
+    <p class="features-subtitle">
+        Our free plan includes all the essential features to run your Minecraft server successfully
+    </p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">💾</div>
+            <h3>4GB DDR4 RAM</h3>
+            <span>Premium memory for smooth gameplay</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>150% CPU Power</h3>
+            <span>High-performance processors</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📍</div>
+            <h3>India Locations</h3>
+            <span>Mumbai & Delhi data centers</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">💽</div>
+            <h3>10GB SSD Storage</h3>
+            <span>Fast NVMe SSD storage</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <h3>Unlimited Players</h3>
+            <span>No player limit restrictions</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🎛️</div>
+            <h3>Full Control Panel</h3>
+            <span>Easy server management</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔄</div>
+            <h3>Auto Backups</h3>
+            <span>Daily automatic backups</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🧩</div>
+            <h3>Unlimited Plugins</h3>
+            <span>Install any plugins you want</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🌍</div>
+            <h3>Java & Bedrock</h3>
+            <span>Support for both editions</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📶</div>
+            <h3>99.9% Uptime</h3>
+            <span>Reliable server availability</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🕒</div>
+            <h3>24/7 Monitoring</h3>
+            <span>Continuous server monitoring</span>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📦</div>
+            <h3>Unlimited Mods</h3>
+            <span>No mod installation limits</span>
+        </div>
+    </div>
+</section>
+<section class="panel-section">
+    <div class="panel-content">
+
+        <!-- LEFT CONTENT -->
+        <div class="panel-text">
+            <h2>Professional Server Management</h2>
+            <p>
+                Get access to our intuitive control panel with all the tools you need
+                to manage your Minecraft server effectively.
+            </p>
+
+            <ul class="panel-features">
+                <li>One-click server start/stop/restart</li>
+                <li>Real-time performance monitoring</li>
+                <li>File manager with FTP access</li>
+                <li>Automatic backup management</li>
+                <li>Plugin installation & management</li>
+            </ul>
+        </div>
+
+        <!-- RIGHT PANEL MOCKUP -->
+        <div class="panel-mockup">
+            <div class="panel-window">
+                <div class="panel-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="panel-title">Veltrion Control Panel</span>
+                    <span class="panel-status">● Online</span>
+                </div>
+
+                <div class="panel-body">
+                    <div class="panel-actions">
+                        <button class="btn start">▶ Start</button>
+                        <button class="btn stop">■ Stop</button>
+                        <button class="btn restart">⟳ Restart</button>
+                    </div>
+
+                    <div class="panel-stats">
+                        <div class="stat-box">
+                            <span>Players Online</span>
+                            <strong>8/20</strong>
+                        </div>
+                        <div class="stat-box">
+                            <span>RAM Usage</span>
+                            <strong>6.2 / 12 GB</strong>
+                        </div>
+                    </div>
+
+                    <div class="progress">
+                        <span>CPU Usage</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <small>67%</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="pricing-section" id="pricing">
+    <h2>Start Free, Upgrade When Ready</h2>
+    <p class="pricing-subtitle">
+        Begin with our free plan and upgrade anytime as your community grows
+    </p>
+
+    <div class="pricing-single">
+        <div class="pricing-card featured">
+
+            <span class="badge-top">🟢 Free Monthly</span>
+
+            <h3>Free Plan</h3>
+            <div class="price">
+                ₹2<span>/month</span>
+            </div>
+
+            <ul class="pricing-features">
+                <li>4GB RAM</li>
+                <li>150% CPU</li>
+                <li>10GB SSD Storage</li>
+                <li>Unlimited Players</li>
+                <li>No DDoS Protection</li>
+                <li>Community Support</li>
+            </ul>
+
+            <a href="https://billing.veltrionhost.fun/products/free-plans/free-plan/checkout" class="pricing-btn">Get Started Free →</a>
+        </div>
+    </div>
+</section>
+<section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <p class="faq-subtitle">
+        Everything you need to know about our free Minecraft hosting
+    </p>
+
+    <div class="faq-grid">
+
+        <div class="faq-card">
+            <h3>Why do you charge ₹2 for a "free" plan?</h3>
+            <p>
+                The ₹2 is a minimal anti-abuse fee to prevent spam and ensure quality service.
+                This helps us maintain server quality and prevent misuse while keeping it virtually free.
+            </p>
+        </div>
+
+        <div class="faq-card">
+            <h3>Is there really no player limit?</h3>
+            <p>
+                Correct! Unlike most free hosting services, we don’t impose player limits.
+                Your server performance depends on optimization and the allocated resources.
+            </p>
+        </div>
+
+        <div class="faq-card">
+            <h3>Can I install unlimited plugins and mods?</h3>
+            <p>
+                Absolutely! There are no restrictions on plugin or mod installations.
+                You get full control over your server configuration just like paid plans.
+            </p>
+        </div>
+
+        <div class="faq-card">
+            <h3>Do I get DDoS protection on the free plan?</h3>
+            <p>
+                No, the free plan doesn’t include DDoS protection.
+                For protection, you can upgrade to our paid plans which include advanced security.
+            </p>
+        </div>
+
+        <div class="faq-card">
+            <h3>How do I upgrade to Budget or High Performance plans?</h3>
+            <p>
+                Upgrading is seamless. From your control panel, you can upgrade instantly
+                without losing any server data or configurations.
+            </p>
+        </div>
+
+        <div class="faq-card">
+            <h3>What support do I get with the free plan?</h3>
+            <p>
+                Free plan users receive community support via documentation and forums.
+                Priority email and 24/7 support are available on paid plans.
+            </p>
+        </div>
+
+    </div>
+</section>
+<section class="cta-section">
+    <div class="cta-box">
+        <h2>Ready to Start Your Adventure?</h2>
+        <p>
+            Join thousands of players who have already started their Minecraft servers
+            with Veltrion Hosting. Your free server is just one click away!
+        </p>
+
+        <a href="#" class="cta-main-btn">
+            🚀 Create Your Free Server
+        </a>
+
+        <div class="cta-note">
+            ❤️ Trusted by 10,000+ Minecraft communities
+        </div>
+    </div>
+</section>
+
+<section class="trustpilot-section">
+    <a href="https://www.trustpilot.com/review/veltrionhost.fun?utm_medium=trustbox&utm_source=TrustBoxReviewCollector"
+       target="_blank"
+       class="trustpilot-btn">
+        Review us on
+        <span class="tp-star">★</span>
+        Trustpilot
+    </a>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-logo">
+            <img src="images/logo.png" class="footer-logo-img">
+            <div>
+                <strong>Veltrion Hosting</strong><br>
+                <span>Premium Game & Cloud Hosting</span>
+            </div>
+        </div>
+
+        <div class="footer-center">
+            © 2026 Veltrion Hosting. All Rights Reserved.
+        </div>
+
+        <div class="footer-right">
+            <a href="mailto:support@veltrionhost.fun">
+                <i class="fa-solid fa-envelope"></i> support@veltrionhost.fun
+            </a>
+            <a href="https://discord.gg/54EtJnjGQD">
+                <i class="fa-brands fa-discord"></i> Discord
+            </a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

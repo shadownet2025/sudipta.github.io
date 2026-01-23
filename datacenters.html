@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Datacenters | Veltrion Hosting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- MAIN SITE CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- FONTS & ICONS -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    color: #e5e7eb;
+
+    /* Base deep navy-purple */
+    background:
+        radial-gradient(
+            ellipse at top,
+            #1a0f3d 0%,
+            #140b33 35%,
+            #0c071f 65%,
+            #05030f 100%
+        );
+
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.03) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.03) 1px,
+            transparent 1px
+        );
+    background-size: 4px 4px;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container,
+header,
+section,
+main {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+/* PAGE CONTENT */
+.page-content {
+    padding: 110px 24px;
+}
+
+/* HERO */
+.dc-hero {
+    text-align: center;
+    max-width: 900px;
+    margin: auto;
+    margin-bottom: 90px;
+}
+
+.dc-hero span {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #a78bfa;
+    opacity: 0.9;
+}
+
+.dc-hero h1 {
+    font-size: 44px;
+    font-weight: 700;
+    margin: 14px 0;
+}
+
+.dc-hero h1 b {
+    color: #a78bfa;
+}
+
+.dc-hero p {
+    font-size: 15px;
+    opacity: 0.75;
+    line-height: 1.6;
+}
+
+/* STATS GRID */
+.dc-stats {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.dc-card {
+    background: linear-gradient(180deg, #0b0f19, #020617);
+    border-radius: 18px;
+    padding: 26px;
+    text-align: center;
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.6),
+        0 0 30px rgba(124,58,237,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dc-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.85),
+        0 0 40px rgba(124,58,237,0.4);
+}
+
+.dc-card h3 {
+    font-size: 22px;
+    color: #a78bfa;
+    margin-bottom: 6px;
+}
+
+.dc-card p {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+/* LOCATION SECTION */
+.dc-location {
+    max-width: 900px;
+    margin: 120px auto 0;
+    text-align: center;
+}
+
+.dc-location h2 {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+/* LOCATIONS */
+.dc-locations {
+    max-width: 1100px;
+    margin: 120px auto 0;
+}
+
+.dc-locations h2 {
+    text-align: right;
+    font-size: 28px;
+    margin-bottom: 24px;
+}
+
+.dc-locations h2 span {
+    color: #a78bfa;
+}
+
+.location-card {
+    background: linear-gradient(180deg, #0b0f19, #020617);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.6),
+        0 0 30px rgba(124,58,237,0.15);
+}
+
+.location-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 22px;
+}
+
+.location-header h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.flag {
+    font-weight: 700;
+    margin-right: 6px;
+}
+
+.location-header p {
+    font-size: 13px;
+    opacity: 0.75;
+}
+
+.tier {
+    font-size: 12px;
+    color: #a78bfa;
+}
+
+.status {
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 999px;
+}
+
+.status.online {
+    background: rgba(34,197,94,0.15);
+    color: #22c55e;
+}
+
+.location-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.stat-box {
+    background: rgba(255,255,255,0.03);
+    padding: 14px;
+    border-radius: 12px;
+}
+
+.stat-box span {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.stat-box b {
+    display: block;
+    margin-top: 4px;
+    color: #a78bfa;
+}
+
+.location-services {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.location-services span {
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(124,58,237,0.15);
+    color: #a78bfa;
+}
+
+.location-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.location-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.location-features li {
+    font-size: 12.5px;
+    opacity: 0.8;
+    margin-bottom: 6px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .dc-locations h2 {
+        text-align: center;
+    }
+}
+
+.dc-location p {
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 1.6;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .dc-hero h1 {
+        font-size: 32px;
+    }
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #1a0033 0%,
+            #0d021f 60%,
+            #05010d 100%
+        );
+
+    padding: 26px 0;
+}
+
+/* TOP DIVIDER LINE */
+.site-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(168,85,247,.45),
+        transparent
+    );
+}
+
+/* INNER */
+.footer-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 24px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+
+    color: #cbd5f5;
+    font-size: 13px;
+}
+
+/* LEFT */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: #020617;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text strong {
+    font-size: 14px;
+    color: #e5e7eb;
+}
+
+.logo-text span {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* CENTER */
+.footer-center {
+    text-align: center;
+    opacity: 0.6;
+    font-size: 12px;
+}
+
+/* RIGHT */
+.footer-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 22px;
+}
+
+.footer-right a {
+    color: #cbd5f5;
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.85;
+}
+
+.footer-right a:hover {
+    opacity: 1;
+    color: #a78bfa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 14px;
+    }
+
+    .footer-right {
+        justify-content: center;
+    }
+
+    .footer-left {
+        justify-content: center;
+        display: flex;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER (SAME AS index.html) -->
+<header class="navbar">
+    <div class="nav-left">
+        <div class="logo">
+            <img src="logo.png" alt="Veltrion Hosting Logo" class="logo-img">
+            <span class="logo-text">Veltrion Hosting</span>
+        </div>
+
+        <!-- HOME -->
+        <div class="nav-links">
+            <a href="/" class="home-link">Home</a>
+        </div>
+
+        <!-- SERVICES -->
+        <div class="services-btn-wrapper nav-links">
+            <a href="#" class="services-link">
+                Services <span class="services-arrow">▾</span>
+            </a>
+
+            <div class="services-dropdown">
+                <a href="gameplans.html" class="service-card">
+                    <div class="service-icon">🎮</div>
+                    <div class="service-text">
+                        <strong>Game Hosting</strong>
+                        <span>Minecraft & game servers</span>
+                    </div>
+                </a>
+
+                <a href="vpsplans.html" class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <div class="service-text">
+                        <strong>VPS Hosting</strong>
+                        <span>High-performance virtual servers</span>
+                    </div>
+                </a>
+
+                <a href="botplans.html" class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <div class="service-text">
+                        <strong>Bot Hosting</strong>
+                        <span>24/7 Discord bot hosting</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ABOUT VELTRION -->
+<div class="about-btn-wrapper nav-links">
+    <a href="#" class="about-link">
+        About Veltrion <span class="about-arrow">▾</span>
+    </a>
+
+    <div class="about-dropdown">
+        <a href="about.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-circle-info"></i></div>
+            <div class="about-text">
+                <strong>About Us</strong>
+                <span>Our story & mission</span>
+            </div>
+        </a>
+
+        <a href="terms.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-file-contract"></i></div>
+            <div class="about-text">
+                <strong>Terms of Service</strong>
+                <span>Our terms & conditions</span>
+            </div>
+        </a>
+        <a href="partners.html" class="about-card">
+    <div class="about-icon">
+        <i class="fa-solid fa-users"></i>
+    </div>
+    <div class="about-text">
+        <strong>Partners</strong>
+        <span>Our trusted partners</span>
+    </div>
+</a>
+
+        <a href="datacenters.html" class="about-card">
+    <div class="about-icon">
+        <i class="fa-solid fa-server"></i>
+    </div>
+    <div class="about-text">
+        <strong>Datacenters</strong>
+        <span>Global infrastructure</span>
+    </div>
+</a>
+
+
+        <a href="privacy.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="about-text">
+                <strong>Privacy Policy</strong>
+                <span>How we handle your data</span>
+            </div>
+        </a>
+
+        <a href="refund.html" class="about-card">
+            <div class="about-icon"><i class="fa-solid fa-rotate-left"></i></div>
+            <div class="about-text">
+                <strong>Refund Policy</strong>
+                <span>Our policy on refunds</span>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+        <!-- SUPPORT (MOVED HERE ✅) -->
+        <div class="support-btn-wrapper nav-links">
+            <a href="#" class="support-link">
+                Support <span class="support-arrow">▾</span>
+            </a>
+
+            <div class="support-dropdown">
+                <a href="contact.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="support-text">
+                        <strong>Contact Us</strong>
+                        <span>Get in touch with us</span>
+                    </div>
+                </a>
+
+                <a href="faq.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-circle-question"></i></div>
+                    <div class="support-text">
+                        <strong>FAQ</strong>
+                        <span>Get expert advice</span>
+                    </div>
+                </a>
+
+                <a href="tutorials.html" class="support-card">
+                    <div class="support-icon"><i class="fa-solid fa-book"></i></div>
+                    <div class="support-text">
+                        <strong>Tutorials</strong>
+                        <span>Step-by-step guides</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="nav-right">
+        <div class="panel-btn-wrapper">
+            <a href="#" class="panel-btn">
+                Panels <span class="panel-arrow">▾</span>
+            </a>
+
+            <div class="dropdown-menu">
+                <a href="https://portal.veltrionhost.fun/" target="_blank" rel="noopener noreferrer">🎮 Game Panel</a>
+                <a href="https://discord.gg/54EtJnjGQD" target="_blank" rel="noopener noreferrer">🎫 Support Ticket</a>
+                <a href="https://status.veltrionhost.fun/" target="_blank" rel="noopener noreferrer">📊 Uptime Status</a>
+            </div>
+        </div>
+
+        <a href="https://discord.gg/54EtJnjGQD" target="_blank" class="client-btn discord-btn">
+            <i class="fa-brands fa-discord"></i>
+            DISCORD
+        </a>
+    </div>
+</header>
+
+<!-- PAGE CONTENT -->
+<div class="page-content">
+
+    <section class="dc-hero">
+        <span>PREMIUM INFRASTRUCTURE</span>
+        <h1>Our <b>Datacenter</b></h1>
+        <p>
+            Our state-of-the-art datacenter in <strong>Worldwide</strong> delivers
+            ultra-low latency, high availability, and enterprise-grade reliability
+            for your servers.
+        </p>
+    </section>
+
+    <section class="dc-stats">
+        <div class="dc-card">
+            <h3>100,000+</h3>
+            <p>Total Servers Capacity</p>
+        </div>
+
+        <div class="dc-card">
+            <h3>10+ Gbps</h3>
+            <p>Network Capacity</p>
+        </div>
+
+        <div class="dc-card">
+            <h3>99.99%</h3>
+            <p>Average Uptime</p>
+        </div>
+
+        <div class="dc-card">
+            <h3>6 Location</h3>
+            <p>Countries Covered</p>
+        </div>
+    </section>
+
+<!-- LOCATIONS -->
+<section class="dc-locations">
+    <h2>Our <span>Locations</span></h2>
+
+    <div class="location-card">
+        <div class="location-header">
+            <div>
+                <h3><span class="flag">IN</span> India - Delhi</h3>
+                <p>📍 Delhi, India</p>
+                <span class="tier">Tier 4 Datacenter</span>
+            </div>
+
+            <span class="status online">● Operational</span>
+        </div>
+
+        <div class="location-stats">
+            <div class="stat-box">
+                <span>Uptime</span>
+                <b>99.99%</b>
+            </div>
+            <div class="stat-box">
+                <span>Network</span>
+                <b>50 Gbps</b>
+            </div>
+            <div class="stat-box">
+                <span>Storage</span>
+                <b>NVMe SSD</b>
+            </div>
+            <div class="stat-box">
+                <span>DDoS</span>
+                <b>17 Tbps Protection</b>
+            </div>
+        </div>
+
+        <div class="location-services">
+            <span>Minecraft</span>
+            <span>Discord Bots</span>
+            <span>VPS</span>
+            <span>Web Hosting</span>
+        </div>
+
+        <div class="location-features">
+            <ul>
+                <li>DDR5 ECC RAM</li>
+                <li>Enterprise NVMe Storage</li>
+            </ul>
+            <ul>
+                <li>AMD EPYC / Intel Xeon</li>
+                <li>Redundant Power</li>
+            </ul>
+        </div>
+    </div>
+
+<div class="location-card" style="margin-top: 26px;">
+    <div class="location-header">
+        <div>
+            <h3><span class="flag">IN</span> India - Mumbai</h3>
+            <p>📍 Mumbai, India</p>
+            <span class="tier">Tier 4 Datacenter</span>
+        </div>
+
+        <span class="status online">● Operational</span>
+    </div>
+
+    <div class="location-stats">
+        <div class="stat-box">
+            <span>Uptime</span>
+            <b>99.99%</b>
+        </div>
+        <div class="stat-box">
+            <span>Network</span>
+            <b>20 Gbps</b>
+        </div>
+        <div class="stat-box">
+            <span>Storage</span>
+            <b>NVMe SSD</b>
+        </div>
+        <div class="stat-box">
+            <span>DDoS</span>
+            <b>8 Tbps Protection</b>
+        </div>
+    </div>
+
+    <div class="location-services">
+        <span>Minecraft</span>
+        <span>Discord Bots</span>
+        <span>VPS</span>
+        <span>Web Hosting</span>
+    </div>
+
+    <div class="location-features">
+        <ul>
+            <li>DDR5 ECC RAM</li>
+            <li>Enterprise NVMe Storage</li>
+        </ul>
+        <ul>
+            <li>AMD EPYC / Intel Xeon</li>
+            <li>Redundant Power</li>
+        </ul>
+    </div>
+</div>
+
+<div class="location-card" style="margin-top: 26px;">
+    <div class="location-header">
+        <div>
+            <h3><span class="flag">IN</span> India - Hyderabad</h3>
+            <p>📍 Hyderabad, India</p>
+            <span class="tier">Tier 4 Datacenter</span>
+        </div>
+
+        <span class="status online">● Operational</span>
+    </div>
+
+    <div class="location-stats">
+        <div class="stat-box">
+            <span>Uptime</span>
+            <b>99.99%</b>
+        </div>
+        <div class="stat-box">
+            <span>Network</span>
+            <b>80 Gbps</b>
+        </div>
+        <div class="stat-box">
+            <span>Storage</span>
+            <b>NVMe SSD</b>
+        </div>
+        <div class="stat-box">
+            <span>DDoS</span>
+            <b>25 Tbps Protection</b>
+        </div>
+    </div>
+
+    <div class="location-services">
+        <span>Minecraft</span>
+        <span>Discord Bots</span>
+        <span>VPS</span>
+        <span>Web Hosting</span>
+    </div>
+
+    <div class="location-features">
+        <ul>
+            <li>DDR5 ECC RAM</li>
+            <li>Enterprise NVMe Storage</li>
+        </ul>
+        <ul>
+            <li>Intel Xeon</li>
+            <li>Redundant Power</li>
+        </ul>
+    </div>
+</div>
+
+<div class="location-card" style="margin-top: 26px;">
+    <div class="location-header">
+        <div>
+            <h3><span class="flag">UAE</span> Dubai - Middle East (UAE)</h3>
+            <p>📍 Middle East (UAE), Dubai</p>
+            <span class="tier">Tier 4 Datacenter</span>
+        </div>
+
+        <span class="status online">● Operational</span>
+    </div>
+
+    <div class="location-stats">
+        <div class="stat-box">
+            <span>Uptime</span>
+            <b>99.99%</b>
+        </div>
+        <div class="stat-box">
+            <span>Network</span>
+            <b>10 Gbps</b>
+        </div>
+        <div class="stat-box">
+            <span>Storage</span>
+            <b>NVMe SSD</b>
+        </div>
+        <div class="stat-box">
+            <span>DDoS</span>
+            <b>2 Tbps Protection</b>
+        </div>
+    </div>
+
+    <div class="location-services">
+        <span>Minecraft</span>
+        <span>Discord Bots</span>
+        <span>VPS</span>
+        <span>Web Hosting</span>
+    </div>
+
+    <div class="location-features">
+        <ul>
+            <li>DDR5 ECC RAM</li>
+            <li>Enterprise NVMe Storage</li>
+        </ul>
+        <ul>
+            <li>AMD EPYC / Intel Xeon</li>
+            <li>Redundant Power</li>
+        </ul>
+    </div>
+</div>
+
+<div class="location-card" style="margin-top: 26px;">
+    <div class="location-header">
+        <div>
+            <h3><span class="flag">SG</span> Asia - Singapore</h3>
+            <p>📍 Singapore, Asia</p>
+            <span class="tier">Tier 4 Datacenter</span>
+        </div>
+
+        <span class="status online">● Operational</span>
+    </div>
+
+    <div class="location-stats">
+        <div class="stat-box">
+            <span>Uptime</span>
+            <b>99.99%</b>
+        </div>
+        <div class="stat-box">
+            <span>Network</span>
+            <b>8 Gbps</b>
+        </div>
+        <div class="stat-box">
+            <span>Storage</span>
+            <b>NVMe SSD</b>
+        </div>
+        <div class="stat-box">
+            <span>DDoS</span>
+            <b>5 Tbps Protection</b>
+        </div>
+    </div>
+
+    <div class="location-services">
+        <span>Minecraft</span>
+        <span>Discord Bots</span>
+        <span>VPS</span>
+        <span>Web Hosting</span>
+    </div>
+
+    <div class="location-features">
+        <ul>
+            <li>DDR5 ECC RAM</li>
+            <li>Enterprise NVMe Storage</li>
+        </ul>
+        <ul>
+            <li>AMD EPYC / Intel Xeon</li>
+            <li>Redundant Power</li>
+        </ul>
+    </div>
+</div>
+
+<div class="location-card" style="margin-top: 26px;">
+    <div class="location-header">
+        <div>
+            <h3><span class="flag">DE</span> Germany - Denmark</h3>
+            <p>📍 Denmark, Germany</p>
+            <span class="tier">Tier 4 Datacenter</span>
+        </div>
+
+        <span class="status online">● Operational</span>
+    </div>
+
+    <div class="location-stats">
+        <div class="stat-box">
+            <span>Uptime</span>
+            <b>99.99%</b>
+        </div>
+        <div class="stat-box">
+            <span>Network</span>
+            <b>100 Gbps</b>
+        </div>
+        <div class="stat-box">
+            <span>Storage</span>
+            <b>NVMe SSD</b>
+        </div>
+        <div class="stat-box">
+            <span>DDoS</span>
+            <b>90 Tbps Protection</b>
+        </div>
+    </div>
+
+    <div class="location-services">
+        <span>Minecraft</span>
+        <span>Discord Bots</span>
+        <span>VPS</span>
+        <span>Web Hosting</span>
+    </div>
+
+    <div class="location-features">
+        <ul>
+            <li>DDR5 ECC RAM</li>
+            <li>Enterprise NVMe Storage</li>
+        </ul>
+        <ul>
+            <li>Intel Xeon</li>
+            <li>Redundant Power</li>
+        </ul>
+    </div>
+</div>
+
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <!-- LEFT -->
+<div class="footer-left">
+    <div class="footer-logo">
+        <img src="images/logo.png" alt="Veltrion Hosting Logo" class="footer-logo-img">
+        <div class="logo-text">
+            <strong>Veltrion Hosting</strong>
+            <span>Premium Game & Cloud Hosting</span>
+        </div>
+    </div>
+</div>
+
+
+        <!-- CENTER -->
+        <div class="footer-center">
+            © 2026 Veltrion Hosting. All Rights Reserved.
+        </div>
+
+        <!-- RIGHT -->
+        <div class="footer-right">
+            <a href="mailto:support@veltrionhost.fun">
+                <i class="fa-solid fa-envelope"></i>
+                support@veltrionhost.fun
+            </a>
+            <a href="https://discord.gg/54EtJnjGQD" target="_blank">
+                <i class="fa-brands fa-discord"></i>
+                Discord
+            </a>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>
